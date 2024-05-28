@@ -11,7 +11,7 @@ Entities can grief the world in all sorts of ways, leading from minor nuisances 
 VanillaTweaks has some fantastic datapacks to handle this, namely 'Anti Creeper Grief', 'Anti Enerman Grief', and 'Anti Ghast Grief'. However these require downloading multiple datapacks to the server, and have limited control over entities due to the capabilities of datapacks.
 
 ### The Solution
-This mod tackles the issues above by adding a new command (not gamerule) `entityGriefing`, with which you can enable or disable the griefing capabilities of individual entity types. It also adds a new attribute to these entities `CanGrief` which defaults to `true` but can be set manually per-entity (in case you don't want to disable griefing for *all* of that entity type).
+This mod tackles the issues above by adding a new command (not gamerule) `entityGriefing` with which you can enable or disable the griefing capabilities of individual entity types.
 
 
 Currently, controls have been implemented for the following list of entities:
