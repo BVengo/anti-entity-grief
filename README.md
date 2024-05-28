@@ -19,7 +19,7 @@ Currently, controls have been implemented for the following list of entities:
 | **Entity**    | **How do they grief?**                        |
 |---------------|-----------------------------------------------|
 | :x: Blaze        | Set fires                                     |
-| :x: Creeper      | Destroy blocks                                |
+| :white_check_mark: Creeper      | Destroy blocks                                |
 | :white_check_mark: Enderman      | Pick up / place blocks                        |
 | :x: Ender Dragon | Destroy blocks                                |
 | :x: End Crystal  | Destroy blocks                                |

@@ -3,8 +3,9 @@
     "package": "antientitygrief.mixin",
     "compatibilityLevel": "JAVA_21",
     "mixins": [
-        "EndermanTakeBlockGoalMixin",
-        "EndermanLeaveBlockGoalMixin"
+        "CreeperMixin",
+        "EndermanLeaveBlockGoalMixin",
+        "EndermanTakeBlockGoalMixin"
     ],
     "injectors": {
         "defaultRequire": 1
