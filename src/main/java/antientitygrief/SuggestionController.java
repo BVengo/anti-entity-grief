@@ -15,7 +15,7 @@ import net.minecraft.network.chat.Component;
 import java.util.List;
 
 public class SuggestionController {
-    private static final List<EntityType<? extends Entity>> ENTITY_SELECTION = List.of(
+    public static final List<EntityType<? extends Entity>> ENTITY_SELECTION = List.of(
         EntityType.BLAZE,  // Set fires
         EntityType.CREEPER,  // Destroy blocks
         EntityType.ENDERMAN,  // Pick up / place blocks
@@ -35,7 +35,7 @@ public class SuggestionController {
     public static final SuggestionProvider<CommandSourceStack> ENTITY_SUGGESTIONS = SuggestionProviders.register(
         new ResourceLocation("griefing_entities"), 
         (commandContext, suggestionsBuilder) -> SharedSuggestionProvider.suggestResource(
-            BuiltInRegistries.ENTITY_TYPE.stream().filter(entityType -> ENTITY_SELECTION.contains(entityType)),
+            BuiltInRegistries.ENTITY_TYPE.stream().filter(ENTITY_SELECTION::contains),
             suggestionsBuilder,
             EntityType::getKey,
             entityType -> Component.translatable(Util.makeDescriptionId("entity", EntityType.getKey(entityType)))));

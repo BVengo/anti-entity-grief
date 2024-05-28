@@ -24,18 +24,28 @@ public class CommandController {
 				EntityType<?> entity = ResourceArgument.getEntityType(commandContext, "entity").value();
 				boolean value = BoolArgumentType.getBool(commandContext, "value");
 
-				String mobId = EntityType.getKey(entity).toString();
-				setEntityGriefing(source, mobId, value);
-
+				setGriefingOption(source, entity, value);
 				return 1;
-		}))));
+			}))
+			.executes(commandContext -> {
+				CommandSourceStack source = commandContext.getSource();
+
+				EntityType<?> entity = ResourceArgument.getEntityType(commandContext, "entity").value();
+
+				printGriefingOption(source, entity);
+				return 1;
+			})));
 	}
 
-	private static void setEntityGriefing(CommandSourceStack source, String mobId, boolean value) {
+	private static void setGriefingOption(CommandSourceStack source, EntityType<?> entity, boolean value) {
+		String entityId = Utils.getEntityId(entity);
+		AntiEntityGrief.CONFIGS.setGriefingOption(entityId, value);
+		source.sendSystemMessage(Component.literal("Griefing for " + entityId + " set to " + value));
+	}
 
-		// Logic to toggle mob griefing for the specified mob
-		// This is a placeholder. Actual implementation depends on the game's API and mod capabilities.
-		// Typically, you would set the mobGriefing rule for the specified mob.
-		source.sendSystemMessage(Component.literal("Mob griefing for " + mobId + " set to " + value));
+	private static void printGriefingOption(CommandSourceStack source, EntityType<?> entity) {
+		String entityId = Utils.getEntityId(entity);
+		boolean currentValue = AntiEntityGrief.CONFIGS.getGriefingOption(entityId);
+		source.sendSystemMessage(Component.literal("Griefing for " + entityId + " is currently " + currentValue));
 	}
 }
