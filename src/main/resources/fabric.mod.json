@@ -1,0 +1,31 @@
+{
+	"schemaVersion": 1,
+	"id": "antientitygrief",
+	"version": "${version}",
+	"name": "Anti Entity Grief",
+	"description": "Enable or disable griefing capabilities of all entities!",
+	"authors": [
+		"BVengo"
+	],
+	"contact": {
+		"sources": "https://github.com/BVengo/antientitygrief",
+        "issues": "https://github.com/BVengo/antientitygrief/issues"
+	},
+	"license": "LGPL-3.0",
+	"icon": "assets/antientitygrief/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"antientitygrief.AntiEntityGrief"
+		]
+	},
+	"mixins": [
+		"antientitygrief.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.11",
+		"minecraft": "~1.20.6",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
