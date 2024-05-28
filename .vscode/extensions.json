@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "bierner.github-markdown-preview",
+        "vscjava.vscode-java-pack",
+        "vscjava.vscode-gradle",
+        "esbenp.prettier-vscode"
+    ]
+}
