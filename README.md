@@ -18,20 +18,20 @@ Currently, controls have been implemented for the following list of entities:
 
 | **Entity**    | **How do they grief?**                        |
 |---------------|-----------------------------------------------|
-| :x: Blaze         | Set fires                                     |
-| :x: Creeper       | Destroy blocks                                |
-| :x: Enderman      | Pick up / place blocks                        |
-| :x: Ender Dragon  | Destroy blocks                                |
-| :x: End Crystal   | Destroy blocks                                |
-| :x: Frog          | Place eggs                                    |
-| :x: Ghast         | Destroy blocks, set fires                     |
-| :x: Player        | All the things                                |
-| :x: Silverfish    | Destroy blocks                                |
-| :x: Snow golem    | Leave snow trails                             |
-| :x: Turtle        | Place eggs                                    |
-| :x: TNT           | Destroy blocks - also impacts TNT minecarts   |
-| :x: Villager      | Farm crops                                    |
-| :x: Wither        | Destroy blocks                                |
+| :x: Blaze        | Set fires                                     |
+| :x: Creeper      | Destroy blocks                                |
+| :white_check_mark: Enderman      | Pick up / place blocks                        |
+| :x: Ender Dragon | Destroy blocks                                |
+| :x: End Crystal  | Destroy blocks                                |
+| :x: Frog         | Place eggs                                    |
+| :x: Ghast        | Destroy blocks, set fires                     |
+| :x: Player       | All the things                                |
+| :x: Silverfish   | Destroy blocks                                |
+| :x: Snow golem   | Leave snow trails                             |
+| :x: Turtle       | Place eggs                                    |
+| :x: TNT          | Destroy blocks - also impacts TNT minecarts   |
+| :x: Villager     | Farm crops                                    |
+| :x: Wither       | Destroy blocks                                |
 
 
 ### Contributing
