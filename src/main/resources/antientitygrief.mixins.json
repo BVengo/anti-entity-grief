@@ -5,7 +5,8 @@
     "mixins": [
         "CreeperMixin",
         "EndermanLeaveBlockGoalMixin",
-        "EndermanTakeBlockGoalMixin"
+        "EndermanTakeBlockGoalMixin",
+        "TurtleLayEggGoalMixin"
     ],
     "injectors": {
         "defaultRequire": 1
