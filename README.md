@@ -16,22 +16,23 @@ This mod tackles the issues above by adding a new command (not gamerule) `entity
 
 Currently, controls have been implemented for the following list of entities:
 
-| **Entity**   | **How do they grief?**                      | **Implemented?**   |
-|--------------|---------------------------------------------|--------------------|
-| Blaze        | Set fires                                   | :x:                |
-| Creeper      | Destroy blocks                              | :white_check_mark: |
-| Enderman     | Pick up / place blocks                      | :white_check_mark: |
-| Ender Dragon | Destroy blocks                              | :white_check_mark: |
-| End Crystal  | Destroy blocks                              | :white_check_mark: |
-| Frog         | Place eggs                                  | :x:                |
-| Ghast        | Destroy blocks, set fires                   | :x:                |
-| Player       | All the things                              | :x:                |
-| Silverfish   | Destroy blocks                              | :x:                |
-| Snow golem   | Leave snow trails                           | :white_check_mark: |
-| Turtle       | Place eggs                                  | :white_check_mark: |
-| TNT          | Destroy blocks - also impacts TNT minecarts | :x:                |
-| Villager     | Farm crops                                  | :x:                |
-| Wither       | Destroy blocks                              | :x:                |
+| **Entity**   | **How do they grief?**    | **Implemented?**   |
+|--------------|---------------------------|--------------------|
+| Blaze        | Set fires                 | :x:                |
+| Creeper      | Destroy blocks            | :white_check_mark: |
+| Enderman     | Pick up / place blocks    | :white_check_mark: |
+| Ender Dragon | Destroy blocks            | :white_check_mark: |
+| End Crystal  | Destroy blocks            | :white_check_mark: |
+| Frog         | Place eggs                | :x:                |
+| Ghast        | Destroy blocks, set fires | :x:                |
+| Player       | All the things            | :x:                |
+| Silverfish   | Destroy blocks            | :x:                |
+| Snow golem   | Leave snow trails         | :white_check_mark: |
+| Turtle       | Place eggs                | :white_check_mark: |
+| TNT          | Destroy blocks            | :white_check_mark: |
+| TNT Minecart | Destroy blocks            | :white_check_mark: |
+| Villager     | Farm crops                | :x:                |
+| Wither       | Destroy blocks            | :x:                |
 
 
 ### Contributing

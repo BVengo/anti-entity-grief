@@ -8,6 +8,8 @@
     "EnderDragonMixin",
     "EndermanLeaveBlockGoalMixin",
     "EndermanTakeBlockGoalMixin",
+    "MinecartTNTMixin",
+    "PrimedTntMixin",
     "SnowGolemMixin",
     "TurtleLayEggGoalMixin"
   ],

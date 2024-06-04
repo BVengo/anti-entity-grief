@@ -27,7 +27,8 @@ public class SuggestionController {
         EntityType.SILVERFISH,  // Destroy blocks
         EntityType.SNOW_GOLEM,  // Leave snow trails
         EntityType.TURTLE,  // Place eggs
-        EntityType.TNT,  // Destroy blocks - also impacts TNT minecarts
+        EntityType.TNT,  // Destroy blocks
+        EntityType.TNT_MINECART,  // Destroy blocks
         EntityType.VILLAGER,  // Farm crops
         EntityType.WITHER  // Destroy blocks
     );
