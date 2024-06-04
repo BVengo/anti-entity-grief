@@ -2,6 +2,7 @@ package antientitygrief.config;
 
 import antientitygrief.SuggestionController;
 import antientitygrief.Utils;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 
 import java.util.Map;
@@ -43,8 +44,11 @@ public class EntityConfigs {
 	}
 
 	public boolean getGriefingOption(EntityType<?> entityType) {
-		String entityId = Utils.getEntityId(entityType);
-		return getGriefingOption(entityId);
+		return getGriefingOption(Utils.getEntityId(entityType));
+	}
+
+	public boolean getGriefingOption(Entity entity) {
+		return getGriefingOption(entity.getType());
 	}
 
 	public void setGriefingOption(String entityId, boolean enabled) {
