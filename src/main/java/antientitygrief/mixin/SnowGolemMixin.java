@@ -14,7 +14,7 @@ public class SnowGolemMixin {
             at = @At(value = "INVOKE",
                     target = "Lnet/minecraft/world/level/block/Block;defaultBlockState()Lnet/minecraft/world/level/block/state/BlockState;"),
             cancellable = true)
-    public void cancelSnowPlacing(CallbackInfo ci) {
+    private void cancelSnowPlacing(CallbackInfo ci) {
         if(!AntiEntityGrief.CONFIGS.getGriefingOption(EntityType.SNOW_GOLEM)) {
             ci.cancel();
         }
