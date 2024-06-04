@@ -9,7 +9,7 @@ import java.io.*;
 public class ConfigParser {
 	private static final File file = new File(FabricLoader.getInstance().getConfigDir().toFile(), AntiEntityGrief.MOD_ID + ".json");
 	private static final Gson gson = new GsonBuilder()
-			.registerTypeAdapter(EntityConfigs.class, new EntityConfigsSerializer())
+			.registerTypeAdapter(Configs.class, new ConfigsSerializer())
 			.setPrettyPrinting().create();
 
 	public static void loadConfig() {
@@ -20,7 +20,7 @@ public class ConfigParser {
 		}
 
 		try (Reader reader = new FileReader(file)) {
-			gson.fromJson(reader, EntityConfigs.class);
+			gson.fromJson(reader, Configs.class);
 			saveConfig();
 		} catch (Exception e) {
 			AntiEntityGrief.LOGGER.error("Error reading config file, creating a new one.", e);
@@ -31,7 +31,7 @@ public class ConfigParser {
 
 	public static void saveConfig() {
 		try (Writer writer = new FileWriter(file)) {
-			gson.toJson(AntiEntityGrief.CONFIGS, writer);
+			gson.toJson(Configs.getInstance(), writer);
 		} catch (IOException e) {
 			AntiEntityGrief.LOGGER.error("Unable to save configs to file.", e);
 		}

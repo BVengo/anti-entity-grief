@@ -1,8 +1,8 @@
 package antientitygrief.mixin;
 
-import antientitygrief.AntiEntityGrief;
+import antientitygrief.config.Capabilities;
+import antientitygrief.config.Configs;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
@@ -17,7 +17,7 @@ public class CreeperMixin {
 				target = "Lnet/minecraft/world/level/Level;explode(Lnet/minecraft/world/entity/Entity;DDDFLnet/minecraft/world/level/Level$ExplosionInteraction;)Lnet/minecraft/world/level/Explosion;"))
 	private Explosion redirectExplode(Level level, Entity entity, double x, double y, double z, float strength, Level.ExplosionInteraction interaction) {
 		// Prevent block destruction from creeper explosion
-		if (!AntiEntityGrief.CONFIGS.getGriefingOption(EntityType.CREEPER)) {
+		if (!Configs.CREEPER.canDo(Capabilities.EXPLODE_BLOCKS)) {
 			interaction = Level.ExplosionInteraction.NONE;
 		}
 

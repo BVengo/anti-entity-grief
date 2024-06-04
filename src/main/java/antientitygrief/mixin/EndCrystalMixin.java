@@ -1,9 +1,9 @@
 package antientitygrief.mixin;
 
-import antientitygrief.AntiEntityGrief;
+import antientitygrief.config.Capabilities;
+import antientitygrief.config.Configs;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.ExplosionDamageCalculator;
@@ -20,7 +20,7 @@ public class EndCrystalMixin {
                     target = "Lnet/minecraft/world/level/Level;explode(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/damagesource/DamageSource;Lnet/minecraft/world/level/ExplosionDamageCalculator;DDDFZLnet/minecraft/world/level/Level$ExplosionInteraction;)Lnet/minecraft/world/level/Explosion;"))
     private Explosion redirectExplode(Level level, Entity entity, DamageSource damageSource, @Nullable ExplosionDamageCalculator explosionDamageCalculator, double x, double y, double z, float strength, boolean hasFire, Level.ExplosionInteraction interaction) {
         // Prevent block destruction from end crystal explosion
-        if (!AntiEntityGrief.CONFIGS.getGriefingOption(EntityType.END_CRYSTAL)) {
+        if (!Configs.END_CRYSTAL.canDo(Capabilities.EXPLODE_BLOCKS)) {
             interaction = Level.ExplosionInteraction.NONE;
         }
 

@@ -1,8 +1,8 @@
 package antientitygrief.mixin;
 
-import antientitygrief.AntiEntityGrief;
+import antientitygrief.config.Capabilities;
+import antientitygrief.config.Configs;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.behavior.HarvestFarmland;
 import net.minecraft.world.entity.npc.Villager;
 import org.spongepowered.asm.mixin.Mixin;
@@ -16,7 +16,9 @@ public class HarvestFarmlandMixin {
             at = @At("HEAD"), cancellable = true)
     private void onCheckExtraStartConditions(ServerLevel serverLevel, Villager villager, CallbackInfoReturnable<Boolean> cir) {
         // Prevent villagers from placing or harvesting crops
-        if (!AntiEntityGrief.CONFIGS.getGriefingOption(EntityType.VILLAGER)) {
+        System.out.println("Attempt");
+        if (!Configs.VILLAGER.canDo(Capabilities.FARM_CROPS)) {
+            System.out.println("Fail");
             cir.setReturnValue(false);
             cir.cancel();
         }

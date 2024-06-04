@@ -1,5 +1,6 @@
 package antientitygrief;
 
+import antientitygrief.config.Configs;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
 
 import net.minecraft.commands.CommandSourceStack;
@@ -15,23 +16,7 @@ import net.minecraft.network.chat.Component;
 import java.util.List;
 
 public class SuggestionController {
-    public static final List<EntityType<? extends Entity>> ENTITY_SELECTION = List.of(
-        EntityType.BLAZE,  // Set fires
-        EntityType.CREEPER,  // Destroy blocks
-        EntityType.ENDERMAN,  // Pick up / place blocks
-        EntityType.ENDER_DRAGON,  // Destroy blocks
-        EntityType.END_CRYSTAL,  // Destroy blocks
-        EntityType.FROG,  // Place eggs
-        EntityType.GHAST,  // Destroy blocks, set fires
-        EntityType.PLAYER,  // All the things, just for laughs
-        EntityType.SILVERFISH,  // Destroy blocks
-        EntityType.SNOW_GOLEM,  // Leave snow trails
-        EntityType.TURTLE,  // Place eggs
-        EntityType.TNT,  // Destroy blocks
-        EntityType.TNT_MINECART,  // Destroy blocks
-        EntityType.VILLAGER,  // Farm crops
-        EntityType.WITHER  // Destroy blocks
-    );
+    public static final List<EntityType<?>> ENTITY_SELECTION = Configs.getEntityTypes();
 
     public static final SuggestionProvider<CommandSourceStack> ENTITY_SUGGESTIONS = SuggestionProviders.register(
         new ResourceLocation("griefing_entities"), 

@@ -1,6 +1,7 @@
 package antientitygrief.mixin;
 
-import antientitygrief.AntiEntityGrief;
+import antientitygrief.config.Capabilities;
+import antientitygrief.config.Configs;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
@@ -15,9 +16,9 @@ public class PowderSnowBlockMixin {
             target = "Lnet/minecraft/world/entity/Entity;mayInteract(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Z"))
     private boolean redirectEntityMayInteract(Entity entity, Level level, BlockPos pos) {
         // Prevent burning entities from breaking powdered snow.
-        if(AntiEntityGrief.CONFIGS.getGriefingOption(entity)) {
-            return false;
-        }
-        return entity.mayInteract(level, pos);
+        return (
+            Configs.getGriefingOption(entity.getType(), Capabilities.MELT_SNOW) &&
+            entity.mayInteract(level, pos)
+        );
     }
 }

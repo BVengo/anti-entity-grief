@@ -1,5 +1,7 @@
 package antientitygrief.mixin;
 
+import antientitygrief.config.Capabilities;
+import antientitygrief.config.Configs;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -23,7 +25,7 @@ public class TurtleLayEggGoalMixin {
     @Inject(method = "tick", at = @At(value = "HEAD"))
     private void onTickStart(CallbackInfo ci) {
         // Grab the config once, rather than multiple times
-        antientitygrief$canGrief = AntiEntityGrief.CONFIGS.getGriefingOption(EntityType.TURTLE);
+        antientitygrief$canGrief = Configs.TURTLE.canDo(Capabilities.PLACE_BLOCKS);
     }
 
     @Redirect(method = "tick", at = @At(value = "INVOKE",

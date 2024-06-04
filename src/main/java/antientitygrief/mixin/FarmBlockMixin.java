@@ -1,6 +1,7 @@
 package antientitygrief.mixin;
 
-import antientitygrief.AntiEntityGrief;
+import antientitygrief.config.Capabilities;
+import antientitygrief.config.Configs;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
@@ -16,7 +17,7 @@ public class FarmBlockMixin {
     @Inject(method = "turnToDirt", at = @At("HEAD"), cancellable = true)
     private static void onTurnToDirt(Entity entity, BlockState state, Level level, BlockPos pos, CallbackInfo ci) {
         // Prevent entities from turning farmland into dirt.
-        if(!AntiEntityGrief.CONFIGS.getGriefingOption(entity)) {
+        if(!Configs.getGriefingOption(entity.getType(), Capabilities.TRAMPLE_CROPS)) {
             ci.cancel();
         }
     }

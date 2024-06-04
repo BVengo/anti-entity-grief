@@ -1,6 +1,8 @@
 package antientitygrief.mixin;
 
 import antientitygrief.AntiEntityGrief;
+import antientitygrief.config.Capabilities;
+import antientitygrief.config.Configs;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.TurtleEggBlock;
@@ -14,7 +16,7 @@ public class TurtleEggBlockMixin {
     @Inject(method = "canDestroyEgg", at = @At("HEAD"), cancellable = true)
     private void onCanDestroyEgg(Level level, Entity entity, CallbackInfoReturnable<Boolean> cir) {
         // Prevent entities from trampling turtle eggs.
-        if(!AntiEntityGrief.CONFIGS.getGriefingOption(entity)) {
+        if(!Configs.getGriefingOption(entity.getType(), Capabilities.TRAMPLE_EGGS)) {
             cir.setReturnValue(false);
             cir.cancel();
         }
