@@ -31,7 +31,7 @@ Currently, controls have been implemented for the following list of entities:
 | Turtle       | Place eggs                | :white_check_mark: |
 | TNT          | Destroy blocks            | :white_check_mark: |
 | TNT Minecart | Destroy blocks            | :white_check_mark: |
-| Villager     | Farm crops                | :x:                |
+| Villager     | Farm crops                | :white_check_mark: |
 | Wither       | Destroy blocks            | :x:                |
 
 
