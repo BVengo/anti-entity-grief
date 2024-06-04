@@ -22,12 +22,19 @@ public class ConfigsSerializer implements JsonSerializer<Configs>, JsonDeseriali
 			EntityCapabilities entityCap = entry.getValue();
 			Set<Capabilities> capabilities = entityCap.getCapabilities();
 
-			JsonObject entity = new JsonObject();
+			JsonObject entityObject = new JsonObject();
 			for (Capabilities capability : capabilities) {
-				entity.addProperty(capability.name(), entityCap.canDo(capability));
+				boolean enabled = entityCap.canDo(capability);
+				if(!enabled) {
+					// Only include capabilities that are disabled. This will reduce the size of the config file.
+					entityObject.addProperty(capability.name(), false);
+				}
 			}
 
-			entities.add(entityId, entity);
+			if(!entityObject.isEmpty()) {
+				// Only include entities that have disabled capabilities.
+				entities.add(entityId, entityObject);
+			}
 		}
 
 		jsonObject.add("entities", entities);

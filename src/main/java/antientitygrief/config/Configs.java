@@ -22,9 +22,10 @@ public class Configs {
     private final static Map<String, EntityCapabilities> configDict = new TreeMap<>();
     private final static List<EntityType<?>> entityTypes = new ArrayList<>();
 
-    // TODO: Test mob defaults against 'true' values
-    public static final EntityCapabilities ALLAY = register(EntityType.ALLAY, true);
+
+    public static final EntityCapabilities ALLAY = register(EntityType.ALLAY, false, MELT_SNOW, PICKUP_ITEMS);
     // AREA_EFFECT_CLOUD - N/A
+    // TODO: Test all mobs below this point
     public static final EntityCapabilities ARMADILLO = register(EntityType.ARMADILLO, true);
     public static final EntityCapabilities ARMOR_STAND = register(EntityType.ARMOR_STAND, true);
     public static final EntityCapabilities ARROW = register(EntityType.ARROW, false);
