@@ -16,9 +16,7 @@ public class HarvestFarmlandMixin {
             at = @At("HEAD"), cancellable = true)
     private void onCheckExtraStartConditions(ServerLevel serverLevel, Villager villager, CallbackInfoReturnable<Boolean> cir) {
         // Prevent villagers from placing or harvesting crops
-        System.out.println("Attempt");
         if (!Configs.VILLAGER.canDo(Capabilities.FARM_CROPS)) {
-            System.out.println("Fail");
             cir.setReturnValue(false);
             cir.cancel();
         }
