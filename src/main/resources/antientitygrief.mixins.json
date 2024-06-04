@@ -1,14 +1,16 @@
 {
-    "required": true,
-    "package": "antientitygrief.mixin",
-    "compatibilityLevel": "JAVA_21",
-    "mixins": [
-        "CreeperMixin",
-        "EndermanLeaveBlockGoalMixin",
-        "EndermanTakeBlockGoalMixin",
-        "TurtleLayEggGoalMixin"
-    ],
-    "injectors": {
-        "defaultRequire": 1
+  "required": true,
+  "package": "antientitygrief.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "CreeperMixin",
+    "EndCrystalMixin",
+    "EnderDragonMixin",
+    "EndermanLeaveBlockGoalMixin",
+    "EndermanTakeBlockGoalMixin",
+    "TurtleLayEggGoalMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
 	}
 }
