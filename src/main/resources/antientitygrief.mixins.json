@@ -13,6 +13,7 @@
     "MinecartTNTMixin",
     "PrimedTntMixin",
     "SnowGolemMixin",
+    "TurtleEggBlockMixin",
     "TurtleLayEggGoalMixin"
   ],
   "injectors": {
