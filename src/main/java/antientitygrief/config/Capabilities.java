@@ -5,6 +5,7 @@ public enum Capabilities {
     EXPLODE_BLOCKS,
     FARM_CROPS,
     MELT_SNOW,
+    PICKUP_ITEMS,
     PLACE_BLOCKS,
     SET_FIRE,
     TRAMPLE_CROPS,
