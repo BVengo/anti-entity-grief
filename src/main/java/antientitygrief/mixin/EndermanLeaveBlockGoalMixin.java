@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class EndermanLeaveBlockGoalMixin {
 	@Inject(method = "canUse", at = @At("HEAD"), cancellable = true)
 	private void onCanUse(CallbackInfoReturnable<Boolean> cir) {
+		// Prevent endermen from placing blocks
 		if (!AntiEntityGrief.CONFIGS.getGriefingOption(EntityType.ENDERMAN)) {
 			cir.setReturnValue(false); // or true depending on your logic
 			cir.cancel();

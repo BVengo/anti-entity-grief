@@ -16,6 +16,7 @@ public class PrimedTntMixin {
             at = @At(value = "INVOKE",
                     target = "Lnet/minecraft/world/level/Level;explode(Lnet/minecraft/world/entity/Entity;DDDFLnet/minecraft/world/level/Level$ExplosionInteraction;)Lnet/minecraft/world/level/Explosion;"))
     private Explosion redirectExplode(Level level, Entity entity, double x, double y, double z, float strength, Level.ExplosionInteraction interaction) {
+        // Prevent block destruction from TNT explosion
         if (!AntiEntityGrief.CONFIGS.getGriefingOption(EntityType.TNT)) {
             interaction = Level.ExplosionInteraction.NONE;
         }

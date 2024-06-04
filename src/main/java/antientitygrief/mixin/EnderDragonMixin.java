@@ -14,6 +14,7 @@ public class EnderDragonMixin {
     @Redirect(method = "checkWalls",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;removeBlock(Lnet/minecraft/core/BlockPos;Z)Z"))
     private boolean redirectRemoveBlock(Level level, BlockPos blockPos, boolean bl) {
+        // Prevent block destruction when the ender dragon flies through them
         if (!AntiEntityGrief.CONFIGS.getGriefingOption(EntityType.ENDER_DRAGON)) {
             return false;
         }

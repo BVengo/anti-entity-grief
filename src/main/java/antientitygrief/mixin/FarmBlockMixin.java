@@ -15,6 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class FarmBlockMixin {
     @Inject(method = "turnToDirt", at = @At("HEAD"), cancellable = true)
     private static void onTurnToDirt(Entity entity, BlockState state, Level level, BlockPos pos, CallbackInfo ci) {
+        // Prevent entities from turning farmland into dirt.
         if(!AntiEntityGrief.CONFIGS.getGriefingOption(entity)) {
             ci.cancel();
         }

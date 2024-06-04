@@ -29,6 +29,7 @@ public class TurtleLayEggGoalMixin {
     @Redirect(method = "tick", at = @At(value = "INVOKE",
             target = "Lnet/minecraft/world/level/Level;setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z"))
     private boolean redirectSetBlock(Level level, BlockPos pos, BlockState state, int flags) {
+        // Prevent turtles from laying eggs (while still allowing them to dig and lose pregnancy state)
         if (antientitygrief$canGrief) {
             return level.setBlock(pos, state, flags);
         }
@@ -38,6 +39,7 @@ public class TurtleLayEggGoalMixin {
     @Redirect(method = "tick", at = @At(value = "INVOKE",
             target = "Lnet/minecraft/world/level/Level;gameEvent(Lnet/minecraft/core/Holder;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/gameevent/GameEvent$Context;)V"))
     private void redirectGameEvent(Level level, Holder<GameEvent> event, BlockPos pos, GameEvent.Context context) {
+        // Prevent turtles from laying eggs (while still allowing them to dig and lose pregnancy state)
         if (antientitygrief$canGrief) {
             level.gameEvent(event, pos, context);
         }

@@ -15,6 +15,7 @@ public class SnowGolemMixin {
                     target = "Lnet/minecraft/world/level/block/Block;defaultBlockState()Lnet/minecraft/world/level/block/state/BlockState;"),
             cancellable = true)
     private void cancelSnowPlacing(CallbackInfo ci) {
+        // Prevent snow golems from placing snow
         if(!AntiEntityGrief.CONFIGS.getGriefingOption(EntityType.SNOW_GOLEM)) {
             ci.cancel();
         }

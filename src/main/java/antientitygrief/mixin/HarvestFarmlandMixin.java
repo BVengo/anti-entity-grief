@@ -15,6 +15,7 @@ public class HarvestFarmlandMixin {
     @Inject(method = "checkExtraStartConditions(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/npc/Villager;)Z",
             at = @At("HEAD"), cancellable = true)
     private void onCheckExtraStartConditions(ServerLevel serverLevel, Villager villager, CallbackInfoReturnable<Boolean> cir) {
+        // Prevent villagers from placing or harvesting crops
         if (!AntiEntityGrief.CONFIGS.getGriefingOption(EntityType.VILLAGER)) {
             cir.setReturnValue(false);
             cir.cancel();

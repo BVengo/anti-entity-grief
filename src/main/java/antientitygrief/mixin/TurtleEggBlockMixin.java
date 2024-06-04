@@ -13,6 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class TurtleEggBlockMixin {
     @Inject(method = "canDestroyEgg", at = @At("HEAD"), cancellable = true)
     private void onCanDestroyEgg(Level level, Entity entity, CallbackInfoReturnable<Boolean> cir) {
+        // Prevent entities from trampling turtle eggs.
         if(!AntiEntityGrief.CONFIGS.getGriefingOption(entity)) {
             cir.setReturnValue(false);
             cir.cancel();

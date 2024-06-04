@@ -19,6 +19,7 @@ public class MinecartTNTMixin {
             at = @At(value = "INVOKE",
                     target = "Lnet/minecraft/world/level/Level;explode(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/damagesource/DamageSource;Lnet/minecraft/world/level/ExplosionDamageCalculator;DDDFZLnet/minecraft/world/level/Level$ExplosionInteraction;)Lnet/minecraft/world/level/Explosion;"))
     private Explosion redirectExplode(Level level, Entity entity, DamageSource damageSource, @Nullable ExplosionDamageCalculator explosionDamageCalculator, double x, double y, double z, float strength, boolean hasFire, Level.ExplosionInteraction interaction) {
+        // Prevent block destruction from TNT minecart explosion
         if (!AntiEntityGrief.CONFIGS.getGriefingOption(EntityType.TNT_MINECART)) {
             interaction = Level.ExplosionInteraction.NONE;
         }
