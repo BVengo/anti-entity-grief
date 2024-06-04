@@ -11,6 +11,7 @@
     "FarmBlockMixin",
     "HarvestFarmlandMixin",
     "MinecartTNTMixin",
+    "PowderSnowBlockMixin",
     "PrimedTntMixin",
     "SnowGolemMixin",
     "TurtleEggBlockMixin",
