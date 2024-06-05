@@ -1,4 +1,4 @@
-package antientitygrief;
+package antientitygrief.commands;
 
 import antientitygrief.config.Configs;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
@@ -8,7 +8,6 @@ import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.commands.synchronization.SuggestionProviders;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.Util;
 import net.minecraft.network.chat.Component;

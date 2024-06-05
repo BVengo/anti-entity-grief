@@ -1,5 +1,6 @@
-package antientitygrief;
+package antientitygrief.commands;
 
+import antientitygrief.Utils;
 import antientitygrief.config.Capabilities;
 import antientitygrief.config.Configs;
 import com.mojang.brigadier.arguments.StringArgumentType;

@@ -1,5 +1,6 @@
 package antientitygrief;
 
+import antientitygrief.commands.CommandController;
 import antientitygrief.config.ConfigParser;
 import net.fabricmc.api.ModInitializer;
 
