@@ -17,7 +17,7 @@ public class FarmBlockMixin {
     @Inject(method = "turnToDirt", at = @At("HEAD"), cancellable = true)
     private static void onTurnToDirt(Entity entity, BlockState state, Level level, BlockPos pos, CallbackInfo ci) {
         // Prevent entities from turning farmland into dirt.
-        if(entity != null && Configs.getGriefingOption(entity.getType(), Capabilities.TRAMPLE_CROPS)) {
+        if(entity != null && !Configs.getGriefingOption(entity.getType(), Capabilities.TRAMPLE_CROPS)) {
             ci.cancel();
         }
     }

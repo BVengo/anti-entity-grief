@@ -1,7 +1,6 @@
 package antientitygrief.config;
 
 import antientitygrief.Utils;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 
 import java.util.ArrayList;
@@ -26,9 +25,9 @@ public class Configs {
     public static final EntityCapabilities ALLAY = register(EntityType.ALLAY, false, MELT_SNOW, PICKUP_ITEMS);
     // AREA_EFFECT_CLOUD - N/A
     public static final EntityCapabilities ARMADILLO = register(EntityType.ARMADILLO, false, MELT_SNOW, TRAMPLE_EGGS);
+    public static final EntityCapabilities ARMOR_STAND = register(EntityType.ARMOR_STAND, false, MELT_SNOW, TRAMPLE_EGGS);
+    // ARROW - N/A
     // TODO: Test all mobs below this point
-    public static final EntityCapabilities ARMOR_STAND = register(EntityType.ARMOR_STAND, true);
-    public static final EntityCapabilities ARROW = register(EntityType.ARROW, false);
     public static final EntityCapabilities AXOLOTL = register(EntityType.AXOLOTL, true);
     // BAT - N/A
     public static final EntityCapabilities BEE = register(EntityType.BEE, true);
