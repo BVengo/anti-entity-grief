@@ -135,7 +135,7 @@ public class Configs {
     // TRADER_LLAMA - Controlled by llama. (TODO: Don't miss this)
     // TRIDENT - Lightning controlled by LIGHTNING_BOLT
     public static final EntityCapabilities TROPICAL_FISH = register(EntityType.TROPICAL_FISH);
-    public static final EntityCapabilities TURTLE = register(EntityType.TURTLE, PLACE_BLOCKS);
+    public static final EntityCapabilities TURTLE = register(EntityType.TURTLE, PLACE_EGGS);
     public static final EntityCapabilities VEX = register(EntityType.VEX);
     public static final EntityCapabilities VILLAGER = register(EntityType.VILLAGER, FARM_CROPS); // TODO: Should this be split into place / destroy?
     public static final EntityCapabilities VINDICATOR = register(EntityType.VINDICATOR);

@@ -17,15 +17,12 @@ public abstract class Utils {
 		}
 	}
 
-	public static boolean entityIsOfType(EntityType<?> entityType, Class<?> clazz) {
+	public static Entity getRemovedEntity(EntityType<?> entityType) {
 		Entity entity = entityType.create(AntiEntityGrief.overworld);
-
 		if (entity != null) {
 			entity.remove(Entity.RemovalReason.DISCARDED);
-			return clazz.isInstance(entity);
 		}
 
-		return false;
+		return entity;
 	}
-
 }

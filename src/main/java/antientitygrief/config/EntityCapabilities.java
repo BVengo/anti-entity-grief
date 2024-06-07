@@ -8,6 +8,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ambient.Bat;
 import net.minecraft.world.entity.animal.Turtle;
+import net.minecraft.world.entity.monster.Zombie;
 
 import java.util.*;
 
@@ -31,33 +32,54 @@ public class EntityCapabilities {
     }
 
     public EntityCapabilities withCalculated() {
-        boolean isLivingEntity = Utils.entityIsOfType(entityType, LivingEntity.class);
-        if (isLivingEntity) {
-            this.withTrampleCrops().withTrampleEggs().withMeltSnow();
-        }
-        return this;
+        /**
+         * Attaches generic capabilities based on specific entity attributes or classes.
+         */
+        Entity entity = Utils.getRemovedEntity(entityType);
+
+        return (this
+                .withTrampleCrops(entity)
+                .withTrampleEggs(entity)
+                .withMeltSnow(entity)
+                .withBreakDoor(entity)
+        );
     }
 
-    private EntityCapabilities withTrampleCrops() {
+    private EntityCapabilities withTrampleCrops(Entity entity) {
         // From FarmBlock.class: entity.getBbWidth() * entity.getBbWidth() * entity.getBbHeight() > 0.512f
         EntityDimensions dimensions = entityType.getDimensions();
-        if (dimensions.width() * dimensions.width() * dimensions.height() > 0.512f) {
+
+        boolean isLiving = entity instanceof LivingEntity;
+        boolean isLarge = dimensions.width() * dimensions.width() * dimensions.height() > 0.512f;
+
+        if (isLiving && isLarge) {
             this.with(TRAMPLE_CROPS);
         }
         return this;
     }
 
-    private EntityCapabilities withTrampleEggs() {
+    private EntityCapabilities withTrampleEggs(Entity entity) {
         // From TurtleEggBlock.class: LivingEntity, except Turtle or Bat
-        if(entityType != EntityType.TURTLE && entityType != EntityType.BAT) {
+        if (!(entity instanceof Turtle || entity instanceof Bat)) {
             this.with(TRAMPLE_EGGS);
         }
         return this;
     }
 
-    private EntityCapabilities withMeltSnow() {
+    private EntityCapabilities withBreakDoor(Entity entity) {
+        // Only Zombie class (and variants) have the breakdoor goal
+        if (entity instanceof Zombie) {
+            this.with(Capabilities.BREAK_DOORS);
+        }
+        return this;
+    }
+
+    private EntityCapabilities withMeltSnow(Entity entity) {
         // From PowerSnowBlock.class: Any LivingEntity
-        return this.with(Capabilities.MELT_SNOW);
+        if(entity instanceof LivingEntity) {
+            this.with(Capabilities.MELT_SNOW);
+        }
+        return this;
     }
 
     public Set<Capabilities> getCapabilities() {

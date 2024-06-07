@@ -19,13 +19,17 @@ import net.minecraft.world.level.gameevent.GameEvent;
 
 @Mixin(targets = "net/minecraft/world/entity/animal/Turtle$TurtleLayEggGoal")
 public class TurtleLayEggGoalMixin {
+    /**
+     * Controls if turtles can place their eggs or not. Does not exit from the 'onUse' function,
+     * because we want the turtle to still lose its pregnancy state and show the digging animation.
+     */
     @Unique
 	private boolean antientitygrief$canGrief;
 
     @Inject(method = "tick", at = @At(value = "HEAD"))
     private void onTickStart(CallbackInfo ci) {
         // Grab the config once, rather than multiple times
-        antientitygrief$canGrief = Configs.TURTLE.canDo(Capabilities.PLACE_BLOCKS);
+        antientitygrief$canGrief = Configs.TURTLE.canDo(Capabilities.PLACE_EGGS);
     }
 
     @Redirect(method = "tick", at = @At(value = "INVOKE",

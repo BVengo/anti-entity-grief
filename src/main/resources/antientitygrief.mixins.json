@@ -3,19 +3,20 @@
     "package": "antientitygrief.mixin",
     "compatibilityLevel": "JAVA_21",
     "mixins": [
+        "behaviours.BreakDoorGoalMixin",
         "behaviours.FarmBlockMixin",
-        "entities.HarvestFarmlandMixin",
         "behaviours.PowderSnowBlockMixin",
+        "behaviours.TurtleEggBlockMixin",
         "entities.AllayMixin",
         "entities.CreeperMixin",
         "entities.EndCrystalMixin",
         "entities.EnderDragonMixin",
         "entities.EndermanLeaveBlockGoalMixin",
         "entities.EndermanTakeBlockGoalMixin",
+        "entities.HarvestFarmlandMixin",
         "entities.MinecartTNTMixin",
         "entities.PrimedTntMixin",
         "entities.SnowGolemMixin",
-        "behaviours.TurtleEggBlockMixin",
         "entities.TurtleLayEggGoalMixin"
     ],
     "injectors": {

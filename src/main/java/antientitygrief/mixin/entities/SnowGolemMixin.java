@@ -14,10 +14,10 @@ public class SnowGolemMixin {
             at = @At(value = "INVOKE",
                     target = "Lnet/minecraft/world/level/block/Block;defaultBlockState()Lnet/minecraft/world/level/block/state/BlockState;"),
             cancellable = true)
-    private void cancelSnowPlacing(CallbackInfo ci) {
+    private void cancelSnowPlacing(CallbackInfo cir) {
         // Prevent snow golems from placing snow
         if(!Configs.SNOW_GOLEM.canDo(Capabilities.PLACE_BLOCKS)) {
-            ci.cancel();
+            cir.cancel();
         }
     }
 }
