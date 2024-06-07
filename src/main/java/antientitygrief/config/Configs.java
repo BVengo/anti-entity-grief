@@ -208,7 +208,7 @@ public class Configs {
         String entityId = Utils.getEntityId(entityType);
         EntityCapabilities entityCapabilities = new EntityCapabilities(entityType);
 
-        entityCapabilities = entityCapabilities.withCalculated().with(capabilities);
+        entityCapabilities = entityCapabilities.with(capabilities);
 
         if (mobDefaults) {
             entityCapabilities = entityCapabilities.with(MELT_SNOW, TRAMPLE_EGGS);
@@ -217,5 +217,9 @@ public class Configs {
         entityTypes.add(entityType);
         configDict.put(entityId, entityCapabilities);
         return entityCapabilities;
+    }
+
+    public static void applyCalculatedCapabilities() {
+        configDict.values().forEach(EntityCapabilities::withCalculated);
     }
 }

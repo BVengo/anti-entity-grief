@@ -38,7 +38,6 @@ public class EntityCapabilities {
         if (isLivingEntity && isLargeEntity) {
             return this.with(TRAMPLE_CROPS);
         }
-        AntiEntityGrief.LOGGER.info("{} living ? {}.", Utils.getEntityId(entityType), isLivingEntity);
         return this;
     }
 
