@@ -1,6 +1,7 @@
 package antientitygrief.config;
 
 import antientitygrief.Utils;
+import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 
 import java.util.ArrayList;
@@ -205,12 +206,12 @@ public class Configs {
 
     public static EntityCapabilities register(EntityType<?> entityType, boolean mobDefaults, Capabilities... capabilities) {
         String entityId = Utils.getEntityId(entityType);
-        EntityCapabilities entityCapabilities = new EntityCapabilities();
+        EntityCapabilities entityCapabilities = new EntityCapabilities(entityType);
 
-        entityCapabilities = entityCapabilities.with(capabilities);
+        entityCapabilities = entityCapabilities.withCalculated().with(capabilities);
 
         if (mobDefaults) {
-            entityCapabilities = entityCapabilities.with(MELT_SNOW, TRAMPLE_CROPS, TRAMPLE_EGGS);
+            entityCapabilities = entityCapabilities.with(MELT_SNOW, TRAMPLE_EGGS);
         }
 
         entityTypes.add(entityType);
