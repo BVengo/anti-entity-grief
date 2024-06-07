@@ -88,6 +88,6 @@ public class EntityCapabilities {
     }
 
     public boolean canDo(Capabilities capability) {
-        return capabilities.getOrDefault(capability, false);
+        return capabilities.getOrDefault(capability, true);
     }
 }

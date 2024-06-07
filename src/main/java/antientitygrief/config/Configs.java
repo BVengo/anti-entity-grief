@@ -108,7 +108,7 @@ public class Configs {
     // POTION - N/A
     public static final EntityCapabilities PUFFERFISH = register(EntityType.PUFFERFISH);
     public static final EntityCapabilities RABBIT = register(EntityType.RABBIT, EAT_BLOCKS);
-    public static final EntityCapabilities RAVAGER = register(EntityType.RAVAGER);
+    public static final EntityCapabilities RAVAGER = register(EntityType.RAVAGER, DESTROY_BLOCKS);
     public static final EntityCapabilities SALMON = register(EntityType.SALMON);
     public static final EntityCapabilities SHEEP = register(EntityType.SHEEP, EAT_BLOCKS);
     public static final EntityCapabilities SHULKER = register(EntityType.SHULKER);
