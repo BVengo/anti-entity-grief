@@ -1,4 +1,4 @@
-package antientitygrief.mixin;
+package antientitygrief.mixin.entities;
 
 import antientitygrief.AntiEntityGrief;
 import antientitygrief.config.Capabilities;

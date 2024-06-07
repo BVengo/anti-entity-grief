@@ -1,24 +1,24 @@
 {
-  "required": true,
-  "package": "antientitygrief.mixin",
-  "compatibilityLevel": "JAVA_21",
-  "mixins": [
-    "AllayMixin",
-    "CreeperMixin",
-    "EndCrystalMixin",
-    "EnderDragonMixin",
-    "EndermanLeaveBlockGoalMixin",
-    "EndermanTakeBlockGoalMixin",
-    "FarmBlockMixin",
-    "HarvestFarmlandMixin",
-    "MinecartTNTMixin",
-    "PowderSnowBlockMixin",
-    "PrimedTntMixin",
-    "SnowGolemMixin",
-    "TurtleEggBlockMixin",
-    "TurtleLayEggGoalMixin"
-  ],
-  "injectors": {
-    "defaultRequire": 1
+    "required": true,
+    "package": "antientitygrief.mixin",
+    "compatibilityLevel": "JAVA_21",
+    "mixins": [
+        "behaviours.FarmBlockMixin",
+        "behaviours.HarvestFarmlandMixin",
+        "behaviours.PowderSnowBlockMixin",
+        "entities.AllayMixin",
+        "entities.CreeperMixin",
+        "entities.EndCrystalMixin",
+        "entities.EnderDragonMixin",
+        "entities.EndermanLeaveBlockGoalMixin",
+        "entities.EndermanTakeBlockGoalMixin",
+        "entities.MinecartTNTMixin",
+        "entities.PrimedTntMixin",
+        "entities.SnowGolemMixin",
+        "entities.TurtleEggBlockMixin",
+        "entities.TurtleLayEggGoalMixin"
+    ],
+    "injectors": {
+        "defaultRequire": 1
 	}
 }

@@ -1,6 +1,7 @@
 package antientitygrief;
 
 import antientitygrief.config.Capabilities;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 
 public abstract class Utils {
@@ -15,4 +16,16 @@ public abstract class Utils {
 			return null;
 		}
 	}
+
+	public static boolean entityIsOfType(EntityType<?> entityType, Class<?> clazz) {
+		Entity entity = entityType.create(AntiEntityGrief.overworld);
+
+		if (entity != null) {
+			entity.remove(Entity.RemovalReason.DISCARDED);
+			return clazz.isInstance(entity);
+		}
+
+		return false;
+	}
+
 }
