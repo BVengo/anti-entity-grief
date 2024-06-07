@@ -211,7 +211,7 @@ public class Configs {
         entityCapabilities = entityCapabilities.with(capabilities);
 
         if (mobDefaults) {
-            entityCapabilities = entityCapabilities.with(MELT_SNOW, TRAMPLE_EGGS);
+            entityCapabilities = entityCapabilities.with(MELT_SNOW);
         }
 
         entityTypes.add(entityType);

@@ -15,7 +15,7 @@
         "entities.MinecartTNTMixin",
         "entities.PrimedTntMixin",
         "entities.SnowGolemMixin",
-        "entities.TurtleEggBlockMixin",
+        "behaviours.TurtleEggBlockMixin",
         "entities.TurtleLayEggGoalMixin"
     ],
     "injectors": {

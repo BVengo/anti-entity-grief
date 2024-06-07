@@ -5,10 +5,13 @@ import antientitygrief.Utils;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ambient.Bat;
+import net.minecraft.world.entity.animal.Turtle;
 
 import java.util.*;
 
 import static antientitygrief.config.Capabilities.TRAMPLE_CROPS;
+import static antientitygrief.config.Capabilities.TRAMPLE_EGGS;
 
 public class EntityCapabilities {
     private final Map<Capabilities, Boolean> capabilities;
@@ -27,16 +30,26 @@ public class EntityCapabilities {
     }
 
     public EntityCapabilities withCalculated() {
-        return this.withTrampleCrops();
+        boolean isLivingEntity = Utils.entityIsOfType(entityType, LivingEntity.class);
+        if (isLivingEntity) {
+            this.withTrampleCrops().withTrampleEggs();
+        }
+        return this;
     }
 
-    public EntityCapabilities withTrampleCrops() {
+    private EntityCapabilities withTrampleCrops() {
         // From FarmBlock.class: entity.getBbWidth() * entity.getBbWidth() * entity.getBbHeight() > 0.512f
         EntityDimensions dimensions = entityType.getDimensions();
-        boolean isLivingEntity = Utils.entityIsOfType(entityType, LivingEntity.class);
-        boolean isLargeEntity = dimensions.width() * dimensions.width() * dimensions.height() > 0.512f;
-        if (isLivingEntity && isLargeEntity) {
-            return this.with(TRAMPLE_CROPS);
+        if (dimensions.width() * dimensions.width() * dimensions.height() > 0.512f) {
+            this.with(TRAMPLE_CROPS);
+        }
+        return this;
+    }
+
+    private EntityCapabilities withTrampleEggs() {
+        // From TurtleEggBlock.class: LivingEntity, except Turtle or Bat
+        if(entityType != EntityType.TURTLE && entityType != EntityType.BAT) {
+            this.with(TRAMPLE_EGGS);
         }
         return this;
     }
