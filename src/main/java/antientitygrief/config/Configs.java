@@ -204,6 +204,14 @@ public class Configs {
         ConfigParser.saveConfig();
     }
 
+    public static void resetCapabilities() {
+        configDict.forEach((entityId, entityCapabilities) -> {
+            entityCapabilities.getCapabilities().forEach(capability -> entityCapabilities.set(capability, true));
+        });
+
+        ConfigParser.saveConfig();
+    }
+
     public static EntityCapabilities register(EntityType<?> entityType, boolean mobDefaults, Capabilities... capabilities) {
         String entityId = Utils.getEntityId(entityType);
         EntityCapabilities entityCapabilities = new EntityCapabilities(entityType);

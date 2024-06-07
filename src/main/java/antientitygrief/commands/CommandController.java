@@ -17,11 +17,18 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EntityType;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class CommandController {
 	public static void register(CommandDispatcher<CommandSourceStack> commandDispatcher, CommandBuildContext commandBuildContext) {
+		registerEntityGriefing(commandDispatcher, commandBuildContext);
+		registerEntityGriefingAll(commandDispatcher, commandBuildContext);
+		registerEntityGriefingReset(commandDispatcher, commandBuildContext);
+	}
+
+	private static void registerEntityGriefing(CommandDispatcher<CommandSourceStack> commandDispatcher, CommandBuildContext commandBuildContext) {
 		/**
 		 * Command to get or set the griefing option for a specific entity type.
 		 * Formats:
@@ -78,10 +85,61 @@ public class CommandController {
 			})));
 	}
 
+	private static void registerEntityGriefingAll(CommandDispatcher<CommandSourceStack> commandDispatcher, CommandBuildContext commandBuildContext) {
+		/**
+		 * Command to get or set a specific griefing capability for all entities (where applicable).
+		 * Format:
+		 * 	/entityGriefingAll <capability> <value> - Get (or set) the specified capability for all entities.
+		 */
+		commandDispatcher.register(Commands.literal("entityGriefingAll")
+			.requires(source -> source.hasPermission(2))
+			.then(Commands.argument("capability", StringArgumentType.string())
+			.suggests((context, builder) -> {
+				// Suggest all capabilities for all entities.
+				List<String> capabilityNames = Arrays.stream(Capabilities.values()).map(Capabilities::name).collect(Collectors.toList());
+				return SharedSuggestionProvider.suggest(capabilityNames, builder);
+			})
+			.then(Commands.argument("value", BoolArgumentType.bool())
+			.executes(commandContext -> {
+				CommandSourceStack source = commandContext.getSource();
+
+				String capability = StringArgumentType.getString(commandContext, "capability");
+				boolean value = BoolArgumentType.getBool(commandContext, "value");
+
+				setGriefingOption(source, capability, value);
+				return 1;
+			}))));
+	}
+
+	private static void registerEntityGriefingReset(CommandDispatcher<CommandSourceStack> commandDispatcher, CommandBuildContext commandBuildContext) {
+		/**
+		 * Command to reset all griefing capabilities to their default values.
+		 * Format:
+		 * 	/entityGriefingReset - Reset all griefing capabilities to their default values.
+		 */
+		commandDispatcher.register(Commands.literal("entityGriefingReset")
+			.requires(source -> source.hasPermission(2))
+			.executes(commandContext -> {
+				CommandSourceStack source = commandContext.getSource();
+
+				Configs.resetCapabilities();
+				source.sendSystemMessage(Component.literal("All griefing capabilities have been reset to their default values."));
+				return 1;
+			}));
+	}
+
 	private static void setGriefingOption(CommandSourceStack source, EntityType<?> entityType, String capability, boolean value) {
 		String entityId = Utils.getEntityId(entityType);
 		Configs.setGriefingOption(entityId, capability, value);
-		source.sendSystemMessage(Component.literal("Griefing for " + entityId + " set to " + value));
+		source.sendSystemMessage(Component.literal(capability + " for " + entityId + " is now " + value));
+	}
+
+	private static void setGriefingOption(CommandSourceStack source, String capability, boolean value) {
+		Configs.getConfigDict().keySet().forEach(entityId -> {
+			Configs.setGriefingOption(entityId, capability, value);
+		});
+
+		source.sendSystemMessage(Component.literal(capability + " for all applicable entities is now " + value));
 	}
 
 	private static void printGriefingOption(CommandSourceStack source, EntityType<?> entity, @Nullable Capabilities capability) {
