@@ -4,7 +4,7 @@
     "compatibilityLevel": "JAVA_21",
     "mixins": [
         "behaviours.FarmBlockMixin",
-        "behaviours.HarvestFarmlandMixin",
+        "entities.HarvestFarmlandMixin",
         "behaviours.PowderSnowBlockMixin",
         "entities.AllayMixin",
         "entities.CreeperMixin",
