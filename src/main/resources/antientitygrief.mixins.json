@@ -4,6 +4,7 @@
     "compatibilityLevel": "JAVA_21",
     "mixins": [
         "behaviours.BreakDoorGoalMixin",
+        "entities.EatBlockGoalMixin",
         "behaviours.FarmBlockMixin",
         "behaviours.PowderSnowBlockMixin",
         "behaviours.TurtleEggBlockMixin",
@@ -13,9 +14,11 @@
         "entities.EnderDragonMixin",
         "entities.EndermanLeaveBlockGoalMixin",
         "entities.EndermanTakeBlockGoalMixin",
+        "entities.FoxEatBerriesGoalMixin",
         "entities.HarvestFarmlandMixin",
         "entities.MinecartTNTMixin",
         "entities.PrimedTntMixin",
+        "entities.RaidGardenGoalMixin",
         "entities.SnowGolemMixin",
         "entities.TurtleLayEggGoalMixin"
     ],

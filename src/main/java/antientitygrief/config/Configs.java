@@ -1,7 +1,6 @@
 package antientitygrief.config;
 
 import antientitygrief.Utils;
-import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 
 import java.util.ArrayList;
@@ -66,7 +65,7 @@ public class Configs {
     // EYE_OF_ENDER - N/A
     // FALLING_BLOCK - N/A
     // FIREWORK_ROCKET - N/A
-    public static final EntityCapabilities FOX = register(EntityType.FOX);
+    public static final EntityCapabilities FOX = register(EntityType.FOX, EAT_BLOCKS);
     public static final EntityCapabilities FROG = register(EntityType.FROG);
     // FURNACE_MINECART - N/A
     public static final EntityCapabilities GHAST = register(EntityType.GHAST, DESTROY_BLOCKS, SET_FIRE);
@@ -108,10 +107,10 @@ public class Configs {
     public static final EntityCapabilities POLAR_BEAR = register(EntityType.POLAR_BEAR);
     // POTION - N/A
     public static final EntityCapabilities PUFFERFISH = register(EntityType.PUFFERFISH);
-    public static final EntityCapabilities RABBIT = register(EntityType.RABBIT);
+    public static final EntityCapabilities RABBIT = register(EntityType.RABBIT, EAT_BLOCKS);
     public static final EntityCapabilities RAVAGER = register(EntityType.RAVAGER);
     public static final EntityCapabilities SALMON = register(EntityType.SALMON);
-    public static final EntityCapabilities SHEEP = register(EntityType.SHEEP);
+    public static final EntityCapabilities SHEEP = register(EntityType.SHEEP, EAT_BLOCKS);
     public static final EntityCapabilities SHULKER = register(EntityType.SHULKER);
     // SHULKER_BULLET - Controlled by shulker.
     public static final EntityCapabilities SILVERFISH = register(EntityType.SILVERFISH, DESTROY_BLOCKS);
