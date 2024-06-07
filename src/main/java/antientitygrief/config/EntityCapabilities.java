@@ -2,6 +2,7 @@ package antientitygrief.config;
 
 import antientitygrief.AntiEntityGrief;
 import antientitygrief.Utils;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -32,7 +33,7 @@ public class EntityCapabilities {
     public EntityCapabilities withCalculated() {
         boolean isLivingEntity = Utils.entityIsOfType(entityType, LivingEntity.class);
         if (isLivingEntity) {
-            this.withTrampleCrops().withTrampleEggs();
+            this.withTrampleCrops().withTrampleEggs().withMeltSnow();
         }
         return this;
     }
@@ -52,6 +53,11 @@ public class EntityCapabilities {
             this.with(TRAMPLE_EGGS);
         }
         return this;
+    }
+
+    private EntityCapabilities withMeltSnow() {
+        // From PowerSnowBlock.class: Any LivingEntity
+        return this.with(Capabilities.MELT_SNOW);
     }
 
     public Set<Capabilities> getCapabilities() {
