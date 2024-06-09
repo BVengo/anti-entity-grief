@@ -13,7 +13,6 @@ public class SilverfishMergeWithStoneGoalMixin {
     @Redirect(method = "canUse", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/GameRules;getBoolean(Lnet/minecraft/world/level/GameRules$Key;)Z"))
     private boolean redirectGetMobGriefing(GameRules gameRules, GameRules.Key<GameRules.BooleanValue> key) {
         // Stop silverfish from turning stone into infested stone
-        AntiEntityGrief.LOGGER.info("Redirecting SilverfishMergeWithStoneGoal");
         return (gameRules.getBoolean(key) && Configs.SILVERFISH.canDo(Capabilities.DESTROY_BLOCKS));
     }
 }

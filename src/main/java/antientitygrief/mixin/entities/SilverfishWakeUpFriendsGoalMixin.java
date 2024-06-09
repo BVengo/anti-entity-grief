@@ -13,7 +13,6 @@ public class SilverfishWakeUpFriendsGoalMixin {
     @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/GameRules;getBoolean(Lnet/minecraft/world/level/GameRules$Key;)Z"))
     private boolean redirectGetMobGriefing(GameRules gameRules, GameRules.Key<GameRules.BooleanValue> key) {
         // Stop silverfish from waking up infested stone around them
-        AntiEntityGrief.LOGGER.info("Redirecting SilverfishWakeUpFriendsGoal");
         return (gameRules.getBoolean(key) && Configs.SILVERFISH.canDo(Capabilities.DESTROY_BLOCKS));
     }
 }
