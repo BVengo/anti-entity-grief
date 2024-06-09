@@ -18,6 +18,7 @@
     "entities.EndermanTakeBlockGoalMixin",
     "entities.FoxEatBerriesGoalMixin",
     "entities.HarvestFarmlandMixin",
+    "entities.LightningBoltMixin",
     "entities.MinecartTNTMixin",
     "entities.PrimedTntMixin",
     "entities.RaidGardenGoalMixin",
