@@ -19,6 +19,7 @@
     "entities.FoxEatBerriesGoalMixin",
     "entities.HarvestFarmlandMixin",
     "entities.LightningBoltMixin",
+    "entities.LivingEntityMixin",
     "entities.MinecartTNTMixin",
     "entities.PrimedTntMixin",
     "entities.RaidGardenGoalMixin",
@@ -27,7 +28,9 @@
     "entities.SilverfishMergeWithStoneGoalMixin",
     "entities.SilverfishWakeUpFriendsGoalMixin",
     "entities.SnowGolemMixin",
-    "entities.TurtleLayEggGoalMixin"
+    "entities.TurtleLayEggGoalMixin",
+    "entities.WitherBossMixin",
+    "entities.WitherSkullMixin"
   ],
   "injectors": {
     "defaultRequire": 1

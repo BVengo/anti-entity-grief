@@ -27,7 +27,6 @@ public class Configs {
     public static final EntityCapabilities ARMADILLO = register(EntityType.ARMADILLO);
     public static final EntityCapabilities ARMOR_STAND = register(EntityType.ARMOR_STAND);
     // ARROW - N/A
-    // TODO: Test all mobs below this point
     public static final EntityCapabilities AXOLOTL = register(EntityType.AXOLOTL);
     // BAT - N/A
     public static final EntityCapabilities BEE = register(EntityType.BEE);
@@ -69,7 +68,7 @@ public class Configs {
     public static final EntityCapabilities FROG = register(EntityType.FROG);
     // FURNACE_MINECART - N/A
     public static final EntityCapabilities GHAST = register(EntityType.GHAST, DESTROY_BLOCKS, SET_FIRE);
-    public static final EntityCapabilities GIANT = register(EntityType.GIANT);  // TODO: Check if can break doors
+    public static final EntityCapabilities GIANT = register(EntityType.GIANT);
     // GLOW_ITEM_FRAME - N/A
     public static final EntityCapabilities GLOW_SQUID = register(EntityType.GLOW_SQUID);
     public static final EntityCapabilities GOAT = register(EntityType.GOAT);
@@ -115,7 +114,7 @@ public class Configs {
     // SHULKER_BULLET - Controlled by shulker.
     public static final EntityCapabilities SILVERFISH = register(EntityType.SILVERFISH, DESTROY_BLOCKS);
     public static final EntityCapabilities SKELETON = register(EntityType.SKELETON);
-    public static final EntityCapabilities SKELETON_HORSE = register(EntityType.SKELETON_HORSE);
+    // SKELETON_HORSE - Controlled by horse.
     public static final EntityCapabilities SLIME = register(EntityType.SLIME);
     // SMALL_FIREBALL - Controlled by blaze.
     public static final EntityCapabilities SNIFFER = register(EntityType.SNIFFER);
@@ -131,18 +130,18 @@ public class Configs {
     // TEXT_DISPLAY - N/A
     public static final EntityCapabilities TNT = register(EntityType.TNT, EXPLODE_BLOCKS);
     public static final EntityCapabilities TNT_MINECART = register(EntityType.TNT_MINECART, EXPLODE_BLOCKS);
-    // TRADER_LLAMA - Controlled by llama. (TODO: Don't miss this)
+    // TRADER_LLAMA - Controlled by llama.
     // TRIDENT - Lightning controlled by LIGHTNING_BOLT
     public static final EntityCapabilities TROPICAL_FISH = register(EntityType.TROPICAL_FISH);
     public static final EntityCapabilities TURTLE = register(EntityType.TURTLE, PLACE_EGGS);
     public static final EntityCapabilities VEX = register(EntityType.VEX);
     public static final EntityCapabilities VILLAGER = register(EntityType.VILLAGER, FARM_CROPS); // TODO: Should this be split into place / destroy?
     public static final EntityCapabilities VINDICATOR = register(EntityType.VINDICATOR);
-    // WANDERING_TRADER - Controlled by villager. (TODO: Don't miss this)
+    // WANDERING_TRADER - Controlled by villager.
     public static final EntityCapabilities WARDEN = register(EntityType.WARDEN);
     public static final EntityCapabilities WIND_CHARGE = register(EntityType.WIND_CHARGE);
     public static final EntityCapabilities WITCH = register(EntityType.WITCH);
-    public static final EntityCapabilities WITHER = register(EntityType.WITHER, DESTROY_BLOCKS, EXPLODE_BLOCKS);
+    public static final EntityCapabilities WITHER = register(EntityType.WITHER, DESTROY_BLOCKS, EXPLODE_BLOCKS, PLACE_BLOCKS);
     public static final EntityCapabilities WITHER_SKELETON = register(EntityType.WITHER_SKELETON);
     // WITHER_SKULL - Controlled by wither.
     public static final EntityCapabilities WOLF = register(EntityType.WOLF);
