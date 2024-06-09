@@ -1,32 +1,34 @@
 {
-    "required": true,
-    "package": "antientitygrief.mixin",
-    "compatibilityLevel": "JAVA_21",
-    "mixins": [
-        "behaviours.BreakDoorGoalMixin",
-        "behaviours.CropBlockMixin",
-        "behaviours.FarmBlockMixin",
-        "behaviours.PitcherCropBlockMixin",
-        "behaviours.PowderSnowBlockMixin",
-        "behaviours.TurtleEggBlockMixin",
-        "entities.AllayMixin",
-        "entities.CreeperMixin",
-        "entities.EatBlockGoalMixin",
-        "entities.EndCrystalMixin",
-        "entities.EnderDragonMixin",
-        "entities.EndermanLeaveBlockGoalMixin",
-        "entities.EndermanTakeBlockGoalMixin",
-        "entities.FoxEatBerriesGoalMixin",
-        "entities.HarvestFarmlandMixin",
-        "entities.MinecartTNTMixin",
-        "entities.PrimedTntMixin",
-        "entities.RaidGardenGoalMixin",
-        "entities.RavagerMixin",
-        "entities.RemoveBlockGoalMixin",
-        "entities.SnowGolemMixin",
-        "entities.TurtleLayEggGoalMixin"
-    ],
-    "injectors": {
-        "defaultRequire": 1
+  "required": true,
+  "package": "antientitygrief.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "behaviours.BreakDoorGoalMixin",
+    "behaviours.CropBlockMixin",
+    "behaviours.FarmBlockMixin",
+    "behaviours.PitcherCropBlockMixin",
+    "behaviours.PowderSnowBlockMixin",
+    "behaviours.TurtleEggBlockMixin",
+    "entities.AllayMixin",
+    "entities.CreeperMixin",
+    "entities.EatBlockGoalMixin",
+    "entities.EndCrystalMixin",
+    "entities.EnderDragonMixin",
+    "entities.EndermanLeaveBlockGoalMixin",
+    "entities.EndermanTakeBlockGoalMixin",
+    "entities.FoxEatBerriesGoalMixin",
+    "entities.HarvestFarmlandMixin",
+    "entities.MinecartTNTMixin",
+    "entities.PrimedTntMixin",
+    "entities.RaidGardenGoalMixin",
+    "entities.RavagerMixin",
+    "entities.RemoveBlockGoalMixin",
+    "entities.SilverfishMergeWithStoneGoalMixin",
+    "entities.SilverfishWakeUpFriendsGoalMixin",
+    "entities.SnowGolemMixin",
+    "entities.TurtleLayEggGoalMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
 	}
 }
