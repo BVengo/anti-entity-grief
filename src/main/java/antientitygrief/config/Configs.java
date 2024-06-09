@@ -67,7 +67,7 @@ public class Configs {
     public static final EntityCapabilities FOX = register(EntityType.FOX, EAT_BLOCKS);
     public static final EntityCapabilities FROG = register(EntityType.FROG);
     // FURNACE_MINECART - N/A
-    public static final EntityCapabilities GHAST = register(EntityType.GHAST, DESTROY_BLOCKS, SET_FIRE);
+    public static final EntityCapabilities GHAST = register(EntityType.GHAST, EXPLODE_BLOCKS, SET_FIRE);
     public static final EntityCapabilities GIANT = register(EntityType.GIANT);
     // GLOW_ITEM_FRAME - N/A
     public static final EntityCapabilities GLOW_SQUID = register(EntityType.GLOW_SQUID);
