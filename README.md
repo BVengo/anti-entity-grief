@@ -13,20 +13,19 @@ VanillaTweaks has some fantastic datapacks to handle this, namely 'Anti Creeper 
 ---
 
 ### Usage
-This mod tackles the issues above by adding a new command `entityGriefing` with which you can enable or disable the griefing capabilities of individual entity types.
+This mod tackles the issues above by adding a couple of new commands with which you can enable or disable the griefing capabilities of individual entity types.
 
-The command takes the following form:
+The commands take on the following form:
 ```
 /entityGriefing <entity> [<capability> [true|false]]
+/entityGriefingAll <capability> [true|false]
+/entityGriefingReset
 ```
 where `<entity>` is the entity type you want to control, `<capability>` is the type of griefing you want to control, and `[true|false]` is whether you want to enable or disable the capability.
 
 _Not all entities will appear in tab-completion, either because I haven't identified any griefing capabilities or because they haven't been implemented yet. Please open an issue on [GitHub](https://github.com/BVengo/anti-entity-grief/) or visit my [Discord](https://discord.com/invite/kUhf3WSSfv) to let me know if there is a missing feature that you feel should be included._
 
----
-
-#### Examples
-To stop endermen from picking up blocks, you would run:
+For example, to stop endermen from picking up blocks, you would run:
 ```
 /entityGriefing minecraft:enderman DESTROY_BLOCKS false
 ```
@@ -40,6 +39,50 @@ To see all permissions for a pig, you would run:
 ```
 /entityGriefing minecraft:pig
 ```
+
+### Configs
+The following capabilities are available for modification, and are available for the applicable entities:
+- `BREAK_DOORS` - The ability to break down doors
+  - Zombies (and all variants)
+- `DESTROY_BLOCKS` - A general ability to destroy blocks through movement or other actions.
+  - Endermen (picking up blocks)
+  - Ender dragons (through movement)
+  - Ravagers(through movement)
+  - Silverfish (merging with stone and breaking out of infested stone)
+  - Withers (through movement)
+- `EAT_BLOCKS` - The ability to modify blocks through some form of eating.
+  - Foxes (eating sweet berries)
+  - Rabbits (eating carrots)
+  - Sheep (eating grass)
+- `EXPLODE_BLOCKS` - Breaking blocks through means of explosions.
+  - Creepers (and charged creepers)
+  - End Crystal
+  - Ghasts (via large fireball)
+  - TNT (and TNT minecart)
+  - Withers (via skulls)
+- `FARM_CROPS` - The ability to farm crops.
+  - Villagers (Farmer variant)
+- `MELT_SNOW` - Living entities on fire will melt powdered snow blocks when standing inside them. This is automatically
+    included for all applicable entities.
+- `PICKUP_ITEMS` - The ability to pick up items. Not a primary focus of this mod, so not fully implemented yet.
+  - Allay
+  - _(Future)_ Piglins, zombies, skeletons, etc
+- `PLACE_BLOCKS` - The ability to place blocks.
+  - Endermen (placing blocks they pick up)
+  - Snow golem (placing snow below them)
+  - Wither (placing wither roses where entities die)
+- `PLACE_EGGS` - The ability to place eggs in the world. Does not disrupt the pregnancy cycle.
+  - Turtles
+  - _(Future)_ Frogs
+- `SET_FIRE` - The ability to set fire to blocks.
+  - Blaze (via small fireball)
+  - Ghast (via large fireball)
+  - Lightning (natural or channelled)
+- `TRAMPLE_CROPS` - Living entities of a certain size will trample crops and farmland when walking on them. This is
+  automatically included for all applicable entities.
+- `TRAMPLE_EGGS` - All living entities except for turtles and bats will trample eggs when walking on them. This is
+  automatically included for all applicable entities. This additionally impacts:
+  - Zombie (and all variants) - the intentional attempt to trample turtle eggs
 
 ### Contributing
 To further discuss or get notified about new updates, check out my [Discord](https://discord.com/invite/kUhf3WSSfv). If you like what I do, consider supporting me on Ko-Fi!

@@ -115,7 +115,7 @@ public class CommandController {
 		/**
 		 * Command to reset all griefing capabilities to their default values.
 		 * Format:
-		 * 	/entityGriefingReset - Reset all griefing capabilities to their default values.
+		 * 	/entityGriefingReset - Reset griefing capabilities to their default values across all entities.
 		 */
 		commandDispatcher.register(Commands.literal("entityGriefingReset")
 			.requires(source -> source.hasPermission(2))
