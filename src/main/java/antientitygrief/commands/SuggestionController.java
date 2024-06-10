@@ -1,5 +1,6 @@
 package antientitygrief.commands;
 
+import antientitygrief.AntiEntityGrief;
 import antientitygrief.config.Configs;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
 
@@ -18,7 +19,7 @@ public class SuggestionController {
     public static final List<EntityType<?>> ENTITY_SELECTION = Configs.getEntityTypes();
 
     public static final SuggestionProvider<CommandSourceStack> ENTITY_SUGGESTIONS = SuggestionProviders.register(
-        new ResourceLocation("griefing_entities"), 
+        ResourceLocation.fromNamespaceAndPath(AntiEntityGrief.MOD_ID, "griefing_entities"),
         (commandContext, suggestionsBuilder) -> SharedSuggestionProvider.suggestResource(
             BuiltInRegistries.ENTITY_TYPE.stream().filter(ENTITY_SELECTION::contains),
             suggestionsBuilder,
