@@ -1,6 +1,5 @@
 package antientitygrief.config;
 
-import antientitygrief.AntiEntityGrief;
 import antientitygrief.Utils;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ambient.Bat;
@@ -79,8 +78,12 @@ public class EntityCapabilities {
         return this;
     }
 
-    public Set<Capabilities> getCapabilities() {
+    public Set<Capabilities> getAvailableCapabilities() {
         return capabilities.keySet();
+    }
+
+    public Map<Capabilities, Boolean> getCapabilities() {
+        return capabilities;
     }
 
     public void set(Capabilities capability, boolean value) {

@@ -20,7 +20,7 @@ public class ConfigsSerializer implements JsonSerializer<Configs>, JsonDeseriali
 		for (Map.Entry<String, EntityCapabilities> entry : configDict.entrySet()) {
 			String entityId = entry.getKey();
 			EntityCapabilities entityCap = entry.getValue();
-			Set<Capabilities> capabilities = entityCap.getCapabilities();
+			Set<Capabilities> capabilities = entityCap.getAvailableCapabilities();
 
 			JsonObject entityObject = new JsonObject();
 			for (Capabilities capability : capabilities) {

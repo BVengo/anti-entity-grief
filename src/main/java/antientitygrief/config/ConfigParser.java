@@ -40,7 +40,7 @@ public class ConfigParser {
 	private static void moveOldConfig() {
 		File oldFile = new File(file.getParentFile(), "old." + file.getName());
 		if (file.renameTo(oldFile)) {
-			AntiEntityGrief.LOGGER.info("Renamed old config file to " + oldFile.getName());
+            AntiEntityGrief.LOGGER.info("Renamed old config file to {}", oldFile.getName());
 		} else {
 			AntiEntityGrief.LOGGER.error("Failed to rename old config file.");
 		}

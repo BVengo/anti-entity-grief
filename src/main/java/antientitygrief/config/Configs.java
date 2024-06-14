@@ -171,18 +171,18 @@ public class Configs {
         return entityTypes;
     }
 
-    public static List<Capabilities> getEntityCapabilities(EntityType<?> entityType) {
-        EntityCapabilities entityCapabilities = configDict.get(Utils.getEntityId(entityType));
+    public static List<Capabilities> getEntityCapabilities(String entityId) {
+        EntityCapabilities entityCapabilities = configDict.get(entityId);
         if (entityCapabilities == null) {
             return new ArrayList<>();
         }
-        return new ArrayList<>(entityCapabilities.getCapabilities());
+        return new ArrayList<>(entityCapabilities.getAvailableCapabilities());
     }
 
     public static boolean getGriefingOption(String entityId, Capabilities capability) {
         EntityCapabilities entityCapabilities = configDict.get(entityId);
         if (entityCapabilities == null) {
-            return false;
+            return true;
         }
         return entityCapabilities.canDo(capability);
     }
@@ -204,7 +204,7 @@ public class Configs {
 
     public static void resetCapabilities() {
         configDict.forEach((entityId, entityCapabilities) -> {
-            entityCapabilities.getCapabilities().forEach(capability -> entityCapabilities.set(capability, true));
+            entityCapabilities.getAvailableCapabilities().forEach(capability -> entityCapabilities.set(capability, true));
         });
 
         ConfigParser.saveConfig();

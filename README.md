@@ -18,7 +18,7 @@ This mod tackles the issues above by adding a couple of new commands with which 
 The commands take on the following form:
 ```
 /entityGriefing <entity> [<capability> [true|false]]
-/entityGriefingAll <capability> [true|false]
+/entityGriefingAll <capability> <true|false>
 /entityGriefingReset
 ```
 where `<entity>` is the entity type you want to control, `<capability>` is the type of griefing you want to control, and `[true|false]` is whether you want to enable or disable the capability.
@@ -30,14 +30,14 @@ For example, to stop endermen from picking up blocks, you would run:
 /entityGriefing minecraft:enderman DESTROY_BLOCKS false
 ```
 
+To set the BREAK_DOORS permission for all applicable entities, you would run:
+```
+/entityGriefingAll BREAK_DOORS false
+```
+
 To see if villagers can farm crops, you would run:
 ```
 /entityGriefing minecraft:villager FARM_CROPS
-```
-
-To see all permissions for a pig, you would run:
-```
-/entityGriefing minecraft:pig
 ```
 
 ### Configs
