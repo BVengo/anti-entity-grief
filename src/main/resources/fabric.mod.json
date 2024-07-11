@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "antientitygrief",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"name": "Anti Entity Grief",
 	"description": "Enable or disable griefing capabilities of all entities!",
 	"authors": [
