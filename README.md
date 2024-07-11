@@ -40,6 +40,11 @@ To see if villagers can farm crops, you would run:
 /entityGriefing minecraft:villager FARM_CROPS
 ```
 
+And finally to see all the things that a pig can do, you would run:
+```
+/entityGriefing minecraft:pig ALL
+```
+
 ### Configs
 The following capabilities are available for modification, and are available for the applicable entities:
 - `BREAK_DOORS` - The ability to break down doors
@@ -85,6 +90,6 @@ The following capabilities are available for modification, and are available for
   - Zombie (and all variants) - the intentional attempt to trample turtle eggs
 
 ### Contributing
-To further discuss or get notified about new updates, check out my [Discord](https://discord.com/invite/kUhf3WSSfv). If you like what I do, consider supporting me on Ko-Fi!
+To further discuss or get notified about new updates, check out my [Discord](https://discord.gg/gyTa5v7kKk). If you like what I do, consider supporting me on Ko-Fi!
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/C0C7DZ3FB)
