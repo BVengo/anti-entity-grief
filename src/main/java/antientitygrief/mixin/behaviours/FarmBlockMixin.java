@@ -1,5 +1,6 @@
 package antientitygrief.mixin.behaviours;
 
+import antientitygrief.AntiEntityGrief;
 import antientitygrief.config.Capabilities;
 import antientitygrief.config.Configs;
 import net.minecraft.core.BlockPos;
@@ -17,7 +18,12 @@ public class FarmBlockMixin {
     @Inject(method = "turnToDirt", at = @At("HEAD"), cancellable = true)
     private static void onTurnToDirt(Entity entity, BlockState state, Level level, BlockPos pos, CallbackInfo ci) {
         // Prevent entities from turning farmland into dirt.
-        if(entity != null && !Configs.getGriefingOption(entity.getType(), Capabilities.TRAMPLE_CROPS)) {
+        if(entity != null && !Configs.getGriefingOption(entity.getType(), Capabilities.TRAMPLE_FARMLAND)) {
+            // TODO: Check if the block above is a crop block. If TRAMPLE_CROPS is enabled, destroy the crops but
+            //  keep the farmland
+
+            // Alternatively, only have TRAMPLE_CROPS for ravager and the rest of the mobs have the default farmland
+            // trampling behaviour.
             ci.cancel();
         }
     }

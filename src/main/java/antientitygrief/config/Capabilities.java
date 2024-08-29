@@ -12,5 +12,6 @@ public enum Capabilities {
     PLACE_EGGS,
     SET_FIRE,
     TRAMPLE_CROPS,
-    TRAMPLE_EGGS
+    TRAMPLE_EGGS,
+    TRAMPLE_FARMLAND
 }
