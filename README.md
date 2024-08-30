@@ -5,15 +5,22 @@
 
 A minecraft mod for fabric, allowing you to control the griefing capabilities of entities!
 
-### The Issue
+### Summary
 Entities can grief the world in all sorts of ways, leading from minor nuisances to major issues. The team at Mojang recognised this and so added the gamerule `mobGriefing` which allows you to disable all mobs from griefing. Unfortunately this is too broad a command to be useful, since in your attempt to disable endermen from stealing blocks you have now stopped your villagers from farming crops!
 
 VanillaTweaks has some fantastic datapacks to handle this, namely 'Anti Creeper Grief', 'Anti Enerman Grief', and 'Anti Ghast Grief'. However these require downloading multiple datapacks to the server, and have limited control over entities due to the capabilities of datapacks.
 
----
+This mod introduces a new method of applying settings per-entity type. It includes settings unique to each type (e.g. separate pick up / place block options for endermen) as well as generic settings (e.g. trampling crops).
 
-### Usage
-This mod tackles the issues above by adding a couple of new commands with which you can enable or disable the griefing capabilities of individual entity types.
+</details>
+
+<details>
+<summary>
+<h3>Usage</h3>
+
+This section contains examples of how to use the commands provided by this mod to control the behaviours of entities.
+</summary>
+
 
 The commands take on the following form:
 ```
@@ -45,49 +52,169 @@ And finally to see all the things that a pig can do, you would run:
 /entityGriefing minecraft:pig ALL
 ```
 
-### Configs
-The following capabilities are available for modification, and are available for the applicable entities:
-- `BREAK_DOORS` - The ability to break down doors
-  - Zombies (and all variants)
-- `DESTROY_BLOCKS` - A general ability to destroy blocks through movement or other actions.
-  - Endermen (picking up blocks)
-  - Ender dragons (through movement)
-  - Ravagers(through movement)
-  - Silverfish (merging with stone and breaking out of infested stone)
-  - Withers (through movement)
-- `EAT_BLOCKS` - The ability to modify blocks through some form of eating.
-  - Foxes (eating sweet berries)
-  - Rabbits (eating carrots)
-  - Sheep (eating grass)
-- `EXPLODE_BLOCKS` - Breaking blocks through means of explosions.
-  - Creepers (and charged creepers)
-  - End Crystal
-  - Ghasts (via large fireball)
-  - TNT (and TNT minecart)
-  - Withers (via skulls)
-- `FARM_CROPS` - The ability to farm crops.
-  - Villagers (Farmer variant)
-- `MELT_SNOW` - Living entities on fire will melt powdered snow blocks when standing inside them. This is automatically
-    included for all applicable entities.
-- `PICKUP_ITEMS` - The ability to pick up items. Not a primary focus of this mod, so not fully implemented yet.
-  - Allay
-  - _(Future)_ Piglins, zombies, skeletons, etc
-- `PLACE_BLOCKS` - The ability to place blocks.
-  - Endermen (placing blocks they pick up)
-  - Snow golem (placing snow below them)
-  - Wither (placing wither roses where entities die)
-- `PLACE_EGGS` - The ability to place eggs in the world. Does not disrupt the pregnancy cycle.
-  - Turtles
-  - _(Future)_ Frogs
-- `SET_FIRE` - The ability to set fire to blocks.
-  - Blaze (via small fireball)
-  - Ghast (via large fireball)
-  - Lightning (natural or channelled)
-- `TRAMPLE_CROPS` - Living entities of a certain size will trample crops and farmland when walking on them. This is
-  automatically included for all applicable entities.
-- `TRAMPLE_EGGS` - All living entities except for turtles and bats will trample eggs when walking on them. This is
-  automatically included for all applicable entities. This additionally impacts:
-  - Zombie (and all variants) - the intentional attempt to trample turtle eggs
+</details>
+
+<details>
+<summary>
+<h3>Configs</h3>
+
+This section contains a list of all capabilities available for modification, and which entities they apply to.
+
+</summary>
+
+<table>
+  <tr>
+    <th>Capability</th>
+    <th>Description</th>
+    <th>Applicable Entities</th>
+  </tr>
+  <tr>
+    <td><code>BREAK_DOORS</code></td>
+    <td>The ability to break down doors</td>
+    <td>
+      <ul>
+        <li>Zombies (and all variants)</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><code>DESTROY_BLOCKS</code></td>
+    <td>The ability to destroy blocks through movement or other actions. See <code>EXPLODE_BLOCKS</code> for destruction through explosions.
+    <br><br>
+    This cannot currently be applied to players.</td>
+    <td>
+      <ul>
+        <li>Endermen <i>(picking up blocks)</i></li>
+        <li>Ender dragons <i>(through movement)</i></li>
+        <li>Ravagers <i>(through movement)</i></li>
+        <li>Silverfish <i>(merging with stone, breaking out of infested stone)</i></li>
+        <li>Withers <i>(through movement)</i></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><code>EAT_BLOCKS</code></td>
+    <td>The ability to modify blocks through some form of eating.</td>
+    <td>
+      <ul>
+        <li>Foxes <i>(eating sweet berries)</i></li>
+        <li>Rabbits <i>(eating carrots)</i></li>
+        <li>Sheep <i>(eating grass)</i></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><code>EXPLODE_BLOCKS</code></td>
+    <td>Breaking blocks through means of explosions.</td>
+    <td>
+      <ul>
+        <li>Creepers (including charged)</li>
+        <li>End Crystal</li>
+        <li>Ghasts <i>(via large fireball)</i></li>
+        <li>TNT <i>(and TNT minecart)</i></li>
+        <li>Withers <i>(via skulls)</i></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><code>FARM_CROPS</code></td>
+    <td>The ability to farm crops.</td>
+    <td>
+      <ul>
+        <li>Villagers (Farmer variant)</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><code>MELT_SNOW</code></td>
+    <td>Living entities on fire will melt powdered snow blocks when standing inside them.</td>
+    <td>
+      <ul>
+        <li>All living entities</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><code>PICKUP_ITEMS</code></td>
+    <td>The ability to pick up items. Not a primary focus of this mod, so has not been fully implemented yet.</td>
+    <td>
+      <ul>
+        <li>Allay</li>
+        <li><i>(Future)</i> Piglins, zombies, skeletons, etc</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><code>PLACE_BLOCKS</code></td>
+    <td>The ability to place blocks.</td>
+    <td>
+      <ul>
+        <li>Endermen <i>(placing blocks they are holding)</i></li>
+        <li>Snow golem <i>(placing snow below them)</i></li>
+        <li>Wither <i>(placing wither roses where entities die)</i></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><code>PLACE_EGGS</code></td>
+    <td>The ability to place eggs in the world. Does not disrupt the pregnancy cycle.</td>
+    <td>
+      <ul>
+        <li>Turtles</li>
+        <li><i>(Future)</i> Frogs</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><code>SET_FIRE</code></td>
+    <td>The ability to set fire to blocks.</td>
+    <td>
+      <ul>
+        <li>Blaze <i>(via small fireball)</i></li>
+        <li>Ghast <i>(via large fireball)</i></li>
+        <li>Lightning <i>(natural or channelled)</i></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><code>TRAMPLE_CROPS</code></td>
+    <td>
+      Living entities over a certain size will trample crops and farmland when walking on them. This option handles the destruction of crops only (see <code>TRAMPLE_FARMLAND</code> for turning farmland into dirt). The size is calculated as:
+      <br><code>width * width * height > 0.512</code><br>
+      If this is disabled, farmland trampling is only possible if no crops are above them.
+    </td>
+    <td>
+      <ul>
+        <li>All applicable entities <i>(this is a calculated field)</i></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><code>TRAMPLE_FARMLAND</code></td>
+    <td>
+      Living entities over a certain size will trample crops and farmland when walking on them. This option only handles turning farmland to dirt (see <code>TRAMPLE_CROPS</code> for destruction of crops). The size is calculated as:
+      <br><code>width * width * height > 0.512</code><br>
+      If this is disabled, crops on farmland can still be trampled without turning the farmland to dirt.
+    </td>
+    <td>
+      <ul>
+        <li>All applicable entities <i>(this is a calculated field)</i></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><code>TRAMPLE_EGGS</code></td>
+    <td>All living entities except for turtles and bats will trample eggs when walking on them.</td>
+    <td>
+      <ul>
+        <li>All applicable entities <i>(this is a calculated field)</i></li>
+        <li>Zombie (and all variants) <i>(intentional egg trampling)</i></li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+</details>
 
 ### Contributing
 To further discuss or get notified about new updates, check out my [Discord](https://discord.gg/gyTa5v7kKk). If you like what I do, consider supporting me on Ko-Fi!
