@@ -2,7 +2,6 @@ package antientitygrief.mixin.entities;
 
 import antientitygrief.config.Capabilities;
 import antientitygrief.config.Configs;
-import net.minecraft.world.entity.EntityType;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

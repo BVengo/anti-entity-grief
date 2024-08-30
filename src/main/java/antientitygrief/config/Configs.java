@@ -194,7 +194,7 @@ public class Configs {
     public static void setGriefingOption(String entityId, String capabilityString, boolean enabled) {
         EntityCapabilities entityCapabilities = configDict.get(entityId);
         if (entityCapabilities == null) {
-            return;  // Entity not in config. TODO: Handle this better
+            return;  // Entity not in config.
         }
 
         Capabilities capability = Capabilities.valueOf(capabilityString);

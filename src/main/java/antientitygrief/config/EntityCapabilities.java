@@ -1,6 +1,5 @@
 package antientitygrief.config;
 
-import antientitygrief.AntiEntityGrief;
 import antientitygrief.Utils;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ambient.Bat;

@@ -1,6 +1,5 @@
 package antientitygrief.mixin.behaviours;
 
-import antientitygrief.AntiEntityGrief;
 import antientitygrief.config.Capabilities;
 import antientitygrief.config.Configs;
 import net.minecraft.world.entity.Entity;
