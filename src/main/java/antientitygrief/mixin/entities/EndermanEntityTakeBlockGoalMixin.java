@@ -8,9 +8,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(targets = "net/minecraft/world/entity/monster/EnderMan$EndermanTakeBlockGoal")
-public class EndermanTakeBlockGoalMixin {
-	@Inject(method = "canUse", at = @At("HEAD"), cancellable = true)
+@Mixin(targets = "net/minecraft/entity/mob/EndermanEntity$PickUpBlockGoal")
+public class EndermanEntityTakeBlockGoalMixin {
+	@Inject(method = "canStart", at = @At("HEAD"), cancellable = true)
 	private void onCanUse(CallbackInfoReturnable<Boolean> cir) {
 		// Prevent endermen from taking blocks
 		if (!Configs.ENDERMAN.canDo(Capabilities.DESTROY_BLOCKS)) {

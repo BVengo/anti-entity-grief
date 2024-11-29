@@ -3,7 +3,7 @@ package antientitygrief.mixin.entities;
 import antientitygrief.AntiEntityGrief;
 import antientitygrief.config.Capabilities;
 import antientitygrief.config.Configs;
-import net.minecraft.world.entity.Entity;
+import net.minecraft.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.projectile.Fireball;
 import net.minecraft.world.entity.projectile.SmallFireball;
