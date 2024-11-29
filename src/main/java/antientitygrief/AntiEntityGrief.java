@@ -21,7 +21,7 @@ public class AntiEntityGrief implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) ->
-				CommandController.register(dispatcher, registryAccess));
+				CommandController.register(dispatcher));
 
 		ServerLifecycleEvents.SERVER_STARTED.register(server -> {
 			overworld = server.getWorld(World.OVERWORLD);
