@@ -1,12 +1,13 @@
 package antientitygrief;
 
 import antientitygrief.config.Capabilities;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnReason;
 
 public abstract class Utils {
 	public static String getEntityId(EntityType<?> entityType) {
-		return EntityType.getKey(entityType).toString();
+		return EntityType.getId(entityType).toString();
 	}
 
 	public static Capabilities getCapability(String capability) {
@@ -18,7 +19,7 @@ public abstract class Utils {
 	}
 
 	public static Entity getRemovedEntity(EntityType<?> entityType) {
-		Entity entity = entityType.create(AntiEntityGrief.overworld);
+		Entity entity = entityType.create(AntiEntityGrief.overworld, SpawnReason.LOAD);
 		if (entity != null) {
 			entity.remove(Entity.RemovalReason.DISCARDED);
 		}

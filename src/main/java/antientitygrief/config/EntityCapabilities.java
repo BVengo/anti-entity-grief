@@ -1,10 +1,12 @@
 package antientitygrief.config;
 
 import antientitygrief.Utils;
-import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.ambient.Bat;
-import net.minecraft.world.entity.animal.Turtle;
-import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.passive.BatEntity;
+import net.minecraft.entity.passive.TurtleEntity;
+import net.minecraft.entity.mob.ZombieEntity;
 
 import java.util.Map;
 import java.util.Set;
@@ -64,7 +66,7 @@ public class EntityCapabilities {
         // Only called if the entity is a living entity
 
         // From TurtleEggBlock.class: LivingEntity, except Turtle or Bat
-        if (!(entity instanceof Turtle || entity instanceof Bat)) {
+        if (!(entity instanceof TurtleEntity || entity instanceof BatEntity)) {
             this.with(TRAMPLE_EGGS);
         }
         return this;
@@ -72,7 +74,7 @@ public class EntityCapabilities {
 
     private EntityCapabilities withBreakDoor(Entity entity) {
         // Only Zombie class (and variants) have the breakdoor goal
-        if (entity instanceof Zombie) {
+        if (entity instanceof ZombieEntity) {
             this.with(Capabilities.BREAK_DOORS);
         }
         return this;

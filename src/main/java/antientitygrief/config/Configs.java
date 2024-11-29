@@ -1,7 +1,7 @@
 package antientitygrief.config;
 
 import antientitygrief.Utils;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.entity.EntityType;
 
 import java.util.ArrayList;
 import java.util.List;
