@@ -79,9 +79,10 @@ This section contains a list of all capabilities available for modification, and
   </tr>
   <tr>
     <td><code>DESTROY_BLOCKS</code></td>
-    <td>The ability to destroy blocks through movement or other actions. See <code>EXPLODE_BLOCKS</code> for destruction through explosions.
-    <br><br>
-    This cannot currently be applied to players.</td>
+    <td>
+      <p>The ability to destroy blocks through movement or other actions. See <code>EXPLODE_BLOCKS</code> for destruction through explosions.</p>
+      <p>This cannot currently be applied to players.</p>
+    </td>
     <td>
       <ul>
         <li>Endermen <i>(picking up blocks)</i></li>
@@ -179,9 +180,8 @@ This section contains a list of all capabilities available for modification, and
   <tr>
     <td><code>TRAMPLE_CROPS</code></td>
     <td>
-      Living entities over a certain size will trample crops and farmland when walking on them. This option handles the destruction of crops only (see <code>TRAMPLE_FARMLAND</code> for turning farmland into dirt). The size is calculated as:
-      <br><code>width * width * height > 0.512</code><br>
-      If this is disabled, farmland trampling is only possible if no crops are above them.
+      <p>Living entities over a certain size (<code>width<sup>2</sup> * height > 0.512</code>) will trample crops and farmland when walking on them. This option handles the destruction of crops only (see <code>TRAMPLE_FARMLAND</code> for turning farmland into dirt).</p>
+      <p>If this is disabled, farmland trampling is only possible if no crops are above them.</p>
     </td>
     <td>
       <ul>
@@ -192,9 +192,8 @@ This section contains a list of all capabilities available for modification, and
   <tr>
     <td><code>TRAMPLE_FARMLAND</code></td>
     <td>
-      Living entities over a certain size will trample crops and farmland when walking on them. This option only handles turning farmland to dirt (see <code>TRAMPLE_CROPS</code> for destruction of crops). The size is calculated as:
-      <br><code>width * width * height > 0.512</code><br>
-      If this is disabled, crops on farmland can still be trampled without turning the farmland to dirt.
+      <p>Living entities over a certain size (<code>width<sup>2</sup> * height > 0.512</code>) will trample crops and farmland when walking on them. This option only handles turning farmland to dirt (see <code>TRAMPLE_CROPS</code> for destruction of crops).</p>
+      <p>If this is disabled, crops on farmland can still be trampled without turning the farmland to dirt </p>
     </td>
     <td>
       <ul>
