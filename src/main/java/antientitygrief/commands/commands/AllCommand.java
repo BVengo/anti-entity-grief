@@ -8,6 +8,8 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 
 import static antientitygrief.commands.commands.CommandHelper.setEntityCapability;
 
@@ -17,7 +19,7 @@ public class AllCommand {
 	 */
 	public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
 		dispatcher.register(CommandManager.literal("entityGriefingAll").requires(CommandHelper.isOp())
-				.then(CapabilityResource.request()
+				.then(CapabilityResource.requestAll()
 						.then(ValueResource.request()
 								.executes(AllCommand::set))));  // entityGriefingAll <capability> <value>
 	}
@@ -30,7 +32,14 @@ public class AllCommand {
 		String capabilityText = capability.equals(SuggestionController.ALL_SYMBOL) ? "All capabilities" : capability;
 
 		Configs.getConfigDict().keySet().forEach(id -> setEntityCapability(id, capability, value));
-		CommandHelper.message(context, capabilityText + " for all entities is now " + value);
+		CommandHelper.message(context, (
+				Text.literal("").styled(style -> style.withColor(Formatting.GRAY))
+				.append(Text.literal("All entities").styled(style -> style.withColor(Formatting.YELLOW)))
+				.append(Text.literal(" now have "))
+				.append(Text.literal(capabilityText).styled(style -> style.withColor(Formatting.AQUA)))
+				.append(Text.literal(" set to "))
+				.append(Text.literal(value ? "true" : "false").styled(style -> style.withColor(value ? Formatting.GREEN : Formatting.RED)))
+		));
 
 		return 1;
 	}

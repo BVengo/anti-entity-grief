@@ -15,11 +15,11 @@ public class CommandHelper {
 		return source -> source.hasPermissionLevel(2);
 	}
 
-	public static void message(ServerCommandSource source, String message) {
-		source.sendFeedback(() -> Text.literal(message), true);
+	public static void message(ServerCommandSource source, Text message) {
+		source.sendFeedback(() -> message, true);
 	}
 
-	public static void message(CommandContext<ServerCommandSource> context, String message) {
+	public static void message(CommandContext<ServerCommandSource> context, Text message) {
 		message(context.getSource(), message);
 	}
 

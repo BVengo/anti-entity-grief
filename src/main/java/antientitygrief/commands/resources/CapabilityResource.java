@@ -13,6 +13,11 @@ public class CapabilityResource {
 				.suggests(SuggestionController::suggestEntityCapabilities);
 	}
 
+	public static RequiredArgumentBuilder<ServerCommandSource, String> requestAll() {
+		return CommandManager.argument("capability", StringArgumentType.string())
+				.suggests(SuggestionController::suggestCapabilities);
+	}
+
 	public static String extract(CommandContext<ServerCommandSource> commandContext) {
 		return StringArgumentType.getString(commandContext, "capability");
 	}

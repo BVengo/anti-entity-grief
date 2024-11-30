@@ -5,6 +5,8 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 
 public class ResetCommand {
 	/**
@@ -18,7 +20,7 @@ public class ResetCommand {
 	private static int reset(CommandContext<ServerCommandSource> context) {
 		// Reset all entity capabilities to their default values.
 		Configs.resetCapabilities();
-		CommandHelper.message(context, "All griefing capabilities have been reset to their default values.");
+		CommandHelper.message(context, Text.literal("All entities have had their configs reset.").styled(style -> style.withColor(Formatting.GRAY)));
 
 		return 1;
 	}

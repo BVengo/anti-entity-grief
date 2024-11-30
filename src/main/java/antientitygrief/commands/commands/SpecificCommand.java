@@ -10,8 +10,11 @@ import antientitygrief.config.Configs;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 
 import static antientitygrief.commands.commands.CommandHelper.setEntityCapability;
 
@@ -19,13 +22,14 @@ public class SpecificCommand {
 	/**
 	 * Register the entityGriefing command for setting and printing a capability on a specific entity.
 	 */
-	public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
+	public static void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess commandRegistryAccess) {
 		dispatcher.register(CommandManager.literal("entityGriefing").requires(CommandHelper.isOp())
-				.then(EntityResource.request()
+				.then(EntityResource.request(commandRegistryAccess)
 						.then(CapabilityResource.request()
 								.then(ValueResource.request()
 										.executes(SpecificCommand::set))  // entityGriefing <entity> <capability> <value>
-								.executes(SpecificCommand::print))));  // entityGriefing <entity> <capability>
+								.executes(SpecificCommand::print))  // entityGriefing <entity> <capability>
+						.executes(SpecificCommand::printaAll)));  // entityGriefing <entity>
 	}
 
 	private static int set(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
@@ -34,10 +38,33 @@ public class SpecificCommand {
 		String capability = CapabilityResource.extract(context);
 		boolean value = ValueResource.extract(context);
 
-		String capabilityText = capability.equals(SuggestionController.ALL_SYMBOL) ? "All capabilities" : capability;
+		String capabilityString = capability.equals(SuggestionController.ALL_SYMBOL) ? "All capabilities" : capability;
 
 		setEntityCapability(entityId, capability, value);
-		CommandHelper.message(context, capabilityText + " for " + entityId + " is now " + value);
+
+		CommandHelper.message(context, (
+			Text.literal("").styled(style -> style.withColor(Formatting.GRAY))
+			.append(Text.literal(entityId).styled(style -> style.withColor(Formatting.YELLOW)))
+			.append(Text.literal(" has "))
+			.append(Text.literal(capabilityString).styled(style -> style.withColor(Formatting.YELLOW)))
+			.append(Text.literal(" now set to "))
+			.append(Text.literal(value ? "true" : "false").styled(style -> style.withColor(Formatting.GREEN)))
+		));
+
+		return 1;
+	}
+
+	private static int printaAll(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
+		// Given an entity, print all capabilities.
+		String entityId = EntityResource.extract(context);
+		ServerCommandSource source = context.getSource();
+
+		if(entityId.equals(SuggestionController.ALL_SYMBOL)) {
+			Configs.getConfigDict().keySet().forEach(id -> printEntityCapability(source, id, SuggestionController.ALL_SYMBOL, true));
+		} else {
+			// Print one entity
+			printEntityCapability(source, entityId, SuggestionController.ALL_SYMBOL, false);
+		}
 
 		return 1;
 	}
@@ -74,7 +101,16 @@ public class SpecificCommand {
 				return;
 			}
 
-			CommandHelper.message(source, entityId + " has capability " + capabilityString + " set to " + Configs.getGriefingOption(entityId, capability));
+			boolean value = Configs.getGriefingOption(entityId, capability);
+
+			CommandHelper.message(source, (
+				Text.literal("").styled(style -> style.withColor(Formatting.GRAY))
+				.append(Text.literal(entityId).styled(style -> style.withColor(Formatting.YELLOW)))
+				.append(Text.literal(" has "))
+				.append(Text.literal(capabilityString).styled(style -> style.withColor(Formatting.AQUA)))
+				.append(Text.literal(" currently set to "))
+				.append(Text.literal(value ? "true" : "false").styled(style -> style.withColor(value ? Formatting.GREEN : Formatting.RED)))
+			));
 		}
 	}
 }
