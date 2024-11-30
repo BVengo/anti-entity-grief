@@ -26,12 +26,12 @@
     "entities.RabbitEntityEatCarrotCropGoalMixin",
     "entities.RavagerEntityMixin",
     "behaviours.StepAndDestroyBlockGoalMixin",
-    "entities.SilverfishMergeWithStoneGoalMixin",
-    "entities.SilverfishWakeUpFriendsGoalMixin",
-    "entities.SmallFireballMixin",
-    "entities.SnowGolemMixin",
-    "entities.TurtleLayEggGoalMixin",
-    "entities.WitherBossMixin",
+      "entities.SilverfishEntityWanderAndInfestGoalMixin",
+    "entities.SilverfishEntityCallForHelpGoalMixin",
+      "entities.SmallFireballEntityMixin",
+      "entities.SnowGolemEntityMixin",
+      "entities.TurtleEntityLayEggGoalMixin",
+      "entities.WitherEntityMixin",
     "entities.WitherSkullEntityMixin"
   ],
   "injectors": {

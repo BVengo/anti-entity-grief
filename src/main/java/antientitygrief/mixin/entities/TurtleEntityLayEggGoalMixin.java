@@ -2,6 +2,10 @@ package antientitygrief.mixin.entities;
 
 import antientitygrief.config.Capabilities;
 import antientitygrief.config.Configs;
+import net.minecraft.block.BlockState;
+import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -10,13 +14,9 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
 
-@Mixin(targets = "net/minecraft/world/entity/animal/Turtle$TurtleLayEggGoal")
-public class TurtleLayEggGoalMixin {
+@Mixin(targets = "net/minecraft/entity/passive/TurtleEntity$LayEggGoal")
+public class TurtleEntityLayEggGoalMixin {
     /**
      * Controls if turtles can place their eggs or not. Does not exit from the 'onUse' function,
      * because we want the turtle to still lose its pregnancy state and show the digging animation.
@@ -31,21 +31,21 @@ public class TurtleLayEggGoalMixin {
     }
 
     @Redirect(method = "tick", at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/world/level/Level;setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z"))
-    private boolean redirectSetBlock(Level level, BlockPos pos, BlockState state, int flags) {
-        // Prevent turtles from laying eggs (while still allowing them to dig and lose pregnancy state)
+            target = "Lnet/minecraft/world/World;setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;I)Z"))
+    private boolean redirectSetBlock(World world, BlockPos pos, BlockState state, int flags) {
+        // Handle the block change
         if (antientitygrief$canGrief) {
-            return level.setBlock(pos, state, flags);
+            return world.setBlockState(pos, state, flags);
         }
         return false;
     }
 
     @Redirect(method = "tick", at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/world/level/Level;gameEvent(Lnet/minecraft/core/Holder;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/gameevent/GameEvent$Context;)V"))
-    private void redirectGameEvent(Level level, Holder<GameEvent> event, BlockPos pos, GameEvent.Context context) {
-        // Prevent turtles from laying eggs (while still allowing them to dig and lose pregnancy state)
+            target = "Lnet/minecraft/world/World;emitGameEvent(Lnet/minecraft/registry/entry/RegistryEntry;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/world/event/GameEvent$Emitter;)V"))
+    private void redirectGameEvent(World world, RegistryEntry<GameEvent> registryEntry, BlockPos blockPos, GameEvent.Emitter emitter) {
+        // Handle the game event triggered by the block change
         if (antientitygrief$canGrief) {
-            level.gameEvent(event, pos, context);
+            world.emitGameEvent(registryEntry, blockPos, emitter);
         }
     }
 }
