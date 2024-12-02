@@ -24,7 +24,6 @@ public class Configs {
 
     public static final EntityCapabilities ALLAY = register(EntityType.ALLAY, PICKUP_ITEMS);
 //    public static final EntityCapabilities AREA_EFFECT_CLOUD = register(EntityType.AREA_AFFECT_CLOUD, ...);
-    public static final EntityCapabilities ARMADILLO = register(EntityType.ARMADILLO);
     public static final EntityCapabilities ARMOR_STAND = register(EntityType.ARMOR_STAND);
 //    public static final EntityCapabilities ARROW = register(EntityType.ARROW, ...);
     public static final EntityCapabilities AXOLOTL = register(EntityType.AXOLOTL);
@@ -33,8 +32,6 @@ public class Configs {
     public static final EntityCapabilities BLAZE = register(EntityType.BLAZE, SET_FIRE);
 //    public static final EntityCapabilities BLOCK_DISPLAY = register(EntityType.BLOCK_DISPLAY, ...);
 //    public static final EntityCapabilities BOAT = register(EntityType.BOAT, ...);
-    public static final EntityCapabilities BOGGED = register(EntityType.BOGGED);
-    public static final EntityCapabilities BREEZE = register(EntityType.BREEZE);
 //    public static final EntityCapabilities BREEZE_WIND_CHARGE = register(EntityType.BREEZE_WIND_CHARGE, ...);  // Controlled by Breeze
     public static final EntityCapabilities CAMEL = register(EntityType.CAMEL);
     public static final EntityCapabilities CAT = register(EntityType.CAT);
@@ -45,7 +42,6 @@ public class Configs {
     public static final EntityCapabilities COD = register(EntityType.COD);
 //    public static final EntityCapabilities COMMAND_BLOCK_MINECART = register(EntityType.COMMAND_BLOCK_MINECART, ...);  // Not planned. Too complex working around commands.
     public static final EntityCapabilities COW = register(EntityType.COW);
-    public static final EntityCapabilities CREAKING = register(EntityType.CREAKING);
 //    public static final EntityCapabilities CREAKING_TRANSFORM = register(EntityType.CREAKING_TRANSIENT);
     public static final EntityCapabilities CREEPER = register(EntityType.CREEPER, EXPLODE_BLOCKS);
     public static final EntityCapabilities DOLPHIN = register(EntityType.DOLPHIN);
@@ -141,7 +137,6 @@ public class Configs {
     public static final EntityCapabilities VINDICATOR = register(EntityType.VINDICATOR);
 //    public static final EntityCapabilities WANDERING_TRADER = register(EntityType.WANDERING_TRADER, ...);  // Controlled by villager;
     public static final EntityCapabilities WARDEN = register(EntityType.WARDEN);
-    public static final EntityCapabilities WIND_CHARGE = register(EntityType.WIND_CHARGE);
     public static final EntityCapabilities WITCH = register(EntityType.WITCH);
     public static final EntityCapabilities WITHER = register(EntityType.WITHER, DESTROY_BLOCKS, EXPLODE_BLOCKS, PLACE_BLOCKS);
     public static final EntityCapabilities WITHER_SKELETON = register(EntityType.WITHER_SKELETON);

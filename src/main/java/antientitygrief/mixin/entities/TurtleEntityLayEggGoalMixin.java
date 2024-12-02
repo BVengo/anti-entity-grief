@@ -41,11 +41,11 @@ public class TurtleEntityLayEggGoalMixin {
     }
 
     @Redirect(method = "tick", at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/world/World;emitGameEvent(Lnet/minecraft/registry/entry/RegistryEntry;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/world/event/GameEvent$Emitter;)V"))
-    private void redirectGameEvent(World world, RegistryEntry<GameEvent> registryEntry, BlockPos blockPos, GameEvent.Emitter emitter) {
+            target = "Lnet/minecraft/world/World;emitGameEvent(Lnet/minecraft/world/event/GameEvent;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/world/event/GameEvent$Emitter;)V"))
+    private void redirectGameEvent(World instance, GameEvent gameEvent, BlockPos blockPos, GameEvent.Emitter emitter) {
         // Handle the game event triggered by the block change
         if (antientitygrief$canGrief) {
-            world.emitGameEvent(registryEntry, blockPos, emitter);
+            instance.emitGameEvent(gameEvent, blockPos, emitter);
         }
     }
 }

@@ -19,7 +19,7 @@ public abstract class Utils {
 	}
 
 	public static Entity getRemovedEntity(EntityType<?> entityType) {
-		Entity entity = entityType.create(AntiEntityGrief.overworld, SpawnReason.LOAD);
+		Entity entity = entityType.create(AntiEntityGrief.overworld);
 		if (entity != null) {
 			entity.remove(Entity.RemovalReason.DISCARDED);
 		}
