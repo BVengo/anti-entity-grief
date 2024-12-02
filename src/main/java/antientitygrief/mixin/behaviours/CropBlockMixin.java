@@ -2,23 +2,20 @@ package antientitygrief.mixin.behaviours;
 
 import antientitygrief.config.Capabilities;
 import antientitygrief.config.Configs;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.entity.Entity;
+import net.minecraft.block.CropBlock;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(CropBlock.class)
 public class CropBlockMixin {
-    @Redirect(method = "entityInside", at = @At(value = "INVOKE", target="Lnet/minecraft/world/level/Level;destroyBlock(Lnet/minecraft/core/BlockPos;ZLnet/minecraft/world/entity/Entity;)Z"))
-    private boolean redirectDestroyBlock(Level level, BlockPos blockPos, boolean bl, Entity entity) {
+    @Redirect(method = "onEntityCollision", at = @At(value = "INVOKE",
+            target="Lnet/minecraft/server/world/ServerWorld;breakBlock(Lnet/minecraft/util/math/BlockPos;ZLnet/minecraft/entity/Entity;)Z"))
+    private boolean redirectDestroyBlock(ServerWorld instance, BlockPos blockPos, boolean drop, Entity entity) {
         // Prevent entities from trampling crops
-        if(!Configs.getGriefingOption(entity.getType(), Capabilities.TRAMPLE_CROPS)) {
-            return false;
-        }
-
-        return level.destroyBlock(blockPos, bl, entity);
+        return Configs.getGriefingOption(entity.getType(), Capabilities.TRAMPLE_CROPS) && instance.breakBlock(blockPos, drop, entity);
     }
 }

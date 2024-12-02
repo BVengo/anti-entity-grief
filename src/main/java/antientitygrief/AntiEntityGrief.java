@@ -7,8 +7,8 @@ import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.Level;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.world.World;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,7 +16,7 @@ public class AntiEntityGrief implements ModInitializer {
 	public static final String MOD_ID = "antientitygrief";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-	public static Level overworld;
+	public static ServerWorld overworld;
 
 	@Override
 	public void onInitialize() {
@@ -24,7 +24,7 @@ public class AntiEntityGrief implements ModInitializer {
 				CommandController.register(dispatcher, registryAccess));
 
 		ServerLifecycleEvents.SERVER_STARTED.register(server -> {
-			overworld = server.getLevel(ServerLevel.OVERWORLD);
+			overworld = server.getWorld(World.OVERWORLD);
 			Configs.applyCalculatedCapabilities();
 		});
 

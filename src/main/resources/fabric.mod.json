@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "antientitygrief",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"name": "Anti Entity Grief",
 	"description": "Enable or disable griefing capabilities of all entities!",
 	"authors": [
@@ -23,9 +23,9 @@
 		"antientitygrief.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.15.11",
-		"minecraft": "~1.21",
-		"java": ">=21",
-		"fabric-api": "*"
+		"fabricloader": ">=0.15.0",
+        "minecraft": "~1.21",
+        "java": ">=21",
+        "fabric-api": "*"
 	}
 }

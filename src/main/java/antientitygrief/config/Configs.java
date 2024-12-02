@@ -1,7 +1,7 @@
 package antientitygrief.config;
 
 import antientitygrief.Utils;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.entity.EntityType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +45,8 @@ public class Configs {
     public static final EntityCapabilities COD = register(EntityType.COD);
 //    public static final EntityCapabilities COMMAND_BLOCK_MINECART = register(EntityType.COMMAND_BLOCK_MINECART, ...);  // Not planned. Too complex working around commands.
     public static final EntityCapabilities COW = register(EntityType.COW);
+    public static final EntityCapabilities CREAKING = register(EntityType.CREAKING);
+//    public static final EntityCapabilities CREAKING_TRANSFORM = register(EntityType.CREAKING_TRANSIENT);
     public static final EntityCapabilities CREEPER = register(EntityType.CREEPER, EXPLODE_BLOCKS);
     public static final EntityCapabilities DOLPHIN = register(EntityType.DOLPHIN);
     public static final EntityCapabilities DONKEY = register(EntityType.DONKEY);
