@@ -13,6 +13,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.text.ClickEvent;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
@@ -29,7 +30,7 @@ public class SpecificCommand {
 								.then(ValueResource.request()
 										.executes(SpecificCommand::set))  // entityGriefing <entity> <capability> <value>
 								.executes(SpecificCommand::print))  // entityGriefing <entity> <capability>
-						.executes(SpecificCommand::printaAll)));  // entityGriefing <entity>
+						.executes(SpecificCommand::printAll)));  // entityGriefing <entity>
 	}
 
 	private static int set(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
@@ -40,21 +41,37 @@ public class SpecificCommand {
 
 		String capabilityString = capability.equals(SuggestionController.ALL_SYMBOL) ? "All capabilities" : capability;
 
-		setEntityCapability(entityId, capability, value);
+		boolean success = setEntityCapability(entityId, capability, value);
 
-		CommandHelper.message(context, (
-			Text.literal("").styled(style -> style.withColor(Formatting.GRAY))
-			.append(Text.literal(entityId).styled(style -> style.withColor(Formatting.YELLOW)))
-			.append(Text.literal(" has "))
-			.append(Text.literal(capabilityString).styled(style -> style.withColor(Formatting.YELLOW)))
-			.append(Text.literal(" now set to "))
-			.append(Text.literal(value ? "true" : "false").styled(style -> style.withColor(Formatting.GREEN)))
-		));
-
-		return 1;
+		if(success) {
+			CommandHelper.message(context, (
+				Text.literal("").styled(style -> style.withColor(Formatting.GRAY))
+				.append(Text.literal(entityId).styled(style -> style.withColor(Formatting.YELLOW)))
+				.append(Text.literal(" now has "))
+				.append(Text.literal(capabilityString).styled(style -> style.withColor(Formatting.AQUA)))
+				.append(Text.literal(" set to "))
+				.append(Text.literal(value ? "true" : "false").styled(style -> style.withColor(Formatting.GREEN)))
+			));
+			return 1;
+		} else {
+			String correctCommand = "/entityGriefing " + entityId;
+			CommandHelper.message(context, (
+				Text.literal("").styled(style -> style.withColor(Formatting.RED))
+				.append(Text.literal("Failed to set "))
+				.append(Text.literal(capabilityString).styled(style -> style.withColor(Formatting.AQUA)))
+				.append(Text.literal(" for "))
+				.append(Text.literal(entityId).styled(style -> style.withColor(Formatting.YELLOW)))
+				.append(Text.literal(". Is that a valid capability for this entity? ("))
+				.append(Text.literal("Click here or type '" + correctCommand + "' to view capabilities")
+						.styled(style -> style.withColor(Formatting.GRAY)
+								.withClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, correctCommand))))
+				.append(Text.literal(")"))
+			));
+			return 0;
+		}
 	}
 
-	private static int printaAll(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
+	private static int printAll(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
 		// Given an entity, print all capabilities.
 		String entityId = EntityResource.extract(context);
 		ServerCommandSource source = context.getSource();
