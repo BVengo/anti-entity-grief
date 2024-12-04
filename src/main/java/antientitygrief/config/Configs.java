@@ -188,15 +188,20 @@ public class Configs {
         return getGriefingOption(Utils.getEntityId(entityType), capability);
     }
 
-    public static void setGriefingOption(String entityId, String capabilityString, boolean enabled) {
+    public static boolean setGriefingOption(String entityId, String capabilityString, boolean enabled) {
         EntityCapabilities entityCapabilities = configDict.get(entityId);
         if (entityCapabilities == null) {
-            return;  // Entity not in config.
+            return false;  // Entity not in config.
         }
 
         Capabilities capability = Capabilities.valueOf(capabilityString);
-        entityCapabilities.set(capability, enabled);
-        ConfigParser.saveConfig();
+        boolean canSet = entityCapabilities.set(capability, enabled);
+
+        if(canSet) {
+            ConfigParser.saveConfig();
+        }
+
+        return canSet;
     }
 
     public static void resetCapabilities() {

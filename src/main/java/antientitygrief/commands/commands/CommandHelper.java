@@ -23,16 +23,17 @@ public class CommandHelper {
 		message(context.getSource(), message);
 	}
 
-	public static void setEntityCapability(String entityId, String capability, boolean value) {
+	public static boolean setEntityCapability(String entityId, String capability, boolean value) {
 		if(capability.equals(SuggestionController.ALL_SYMBOL)) {
 			// Set all capabilities
 			List<Capabilities> capabilities = Configs.getEntityCapabilities(entityId);
 			for (Capabilities c : capabilities) {
 				Configs.setGriefingOption(entityId, c.toString(), value);
 			}
+			return true;
 		} else {
 			// Set one capability
-			Configs.setGriefingOption(entityId, capability, value);
+			return Configs.setGriefingOption(entityId, capability, value);
 		}
 	}
 }

@@ -88,8 +88,12 @@ public class EntityCapabilities {
         return capabilities;
     }
 
-    public void set(Capabilities capability, boolean value) {
+    public boolean set(Capabilities capability, boolean value) {
+        if (!capabilities.containsKey(capability)) {
+            return false;
+        }
         capabilities.put(capability, value);
+        return true;
     }
 
     public boolean canDo(Capabilities capability) {
