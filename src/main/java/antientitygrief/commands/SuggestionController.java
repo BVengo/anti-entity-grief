@@ -52,7 +52,7 @@ public class SuggestionController {
         }
 
         List<String> capabilityNames = capabilities.stream().map(Capabilities::name).collect(Collectors.toList());
-        capabilityNames.addFirst(ALL_SYMBOL);
+        capabilityNames.add(0, ALL_SYMBOL);
 
         return CommandSource.suggestMatching(capabilityNames, builder);
     }
@@ -60,7 +60,7 @@ public class SuggestionController {
     public static CompletableFuture<Suggestions> suggestCapabilities(CommandContext<ServerCommandSource> context, SuggestionsBuilder builder) throws CommandSyntaxException {
         // Suggest capabilities for all entities
         List<String> capabilityNames = Arrays.stream(Capabilities.values()).map(Capabilities::name).collect(Collectors.toList());
-        capabilityNames.addFirst(ALL_SYMBOL);
+        capabilityNames.add(0, ALL_SYMBOL);
 
         return CommandSource.suggestMatching(capabilityNames, builder);
     }
