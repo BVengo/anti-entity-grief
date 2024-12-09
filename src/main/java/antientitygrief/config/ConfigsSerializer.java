@@ -25,6 +25,7 @@ public class ConfigsSerializer implements JsonSerializer<Configs>, JsonDeseriali
 			JsonObject entityObject = new JsonObject();
 			for (Capabilities capability : capabilities) {
 				boolean enabled = entityCap.canDo(capability);
+				
 				if(!enabled) {
 					// Only include capabilities that are disabled. This will reduce the size of the config file.
 					entityObject.addProperty(capability.name(), false);
@@ -81,7 +82,10 @@ public class ConfigsSerializer implements JsonSerializer<Configs>, JsonDeseriali
 					return;
 				}
 
-				Configs.setGriefingOption(entityId, capabilityName, enabled);
+				boolean success = Configs.setGriefingOption(entityId, capabilityName, enabled);
+				if(!success) {
+					AntiEntityGrief.LOGGER.warn("Ignored invalid capability {} for entity {}", capabilityName, entityId);
+				}
 			});
 		});
 	}
