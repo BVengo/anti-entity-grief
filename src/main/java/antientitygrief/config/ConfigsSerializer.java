@@ -31,7 +31,7 @@ public class ConfigsSerializer implements JsonSerializer<Configs>, JsonDeseriali
 				}
 			}
 
-			if(entityObject.size() == 0) {
+			if(entityObject.size() != 0) {
 				// Only include entities that have disabled capabilities.
 				entities.add(entityId, entityObject);
 			}
