@@ -26,9 +26,8 @@ public class AntiEntityGrief implements ModInitializer {
 		ServerLifecycleEvents.SERVER_STARTED.register(server -> {
 			overworld = server.getWorld(World.OVERWORLD);
 			Configs.applyCalculatedCapabilities();
+			ConfigParser.loadConfig();
 		});
-
-		ConfigParser.loadConfig();
 
         LOGGER.info("{} loaded.", LOGGER.getName());
 	}
