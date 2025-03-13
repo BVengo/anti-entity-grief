@@ -1,5 +1,6 @@
 package antientitygrief.mixin.behaviours;
 
+import antientitygrief.AntiEntityGrief;
 import antientitygrief.config.Capabilities;
 import antientitygrief.config.Configs;
 import net.minecraft.block.TurtleEggBlock;
@@ -16,13 +17,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(StepAndDestroyBlockGoal.class)
 public class StepAndDestroyBlockGoalMixin {
-	// TODO: Stop zombies from breaking turtle eggs event when the rule is disabled mid-trample. Still allows targeting of the
-	// 	turtle egg, but the egg will not be broken.
 	@Shadow @Final private Block targetBlock;
 	@Shadow @Final private MobEntity stepAndDestroyMob;
 	@Shadow private int counter;
 
-	@Inject(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;removeBlock(Lnet/minecraft/util/math/BlockPos;Z)Z"), cancellable = true)
+	@Inject(method = "tick",
+			at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;removeBlock(Lnet/minecraft/util/math/BlockPos;Z)Z"),
+			cancellable = true, id = AntiEntityGrief.MOD_ID + ":targetEgg" )
 	private void onRemoveBlock(CallbackInfo ci) {
 		EntityType<?> entityType = this.stepAndDestroyMob.getType();
 

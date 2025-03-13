@@ -1,5 +1,6 @@
 package antientitygrief.mixin.entities;
 
+import antientitygrief.AntiEntityGrief;
 import antientitygrief.config.Capabilities;
 import antientitygrief.config.Configs;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
@@ -10,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(EnderDragonEntity.class)
 public class EnderDragonEntityMixin {
-    @Inject(method = "destroyBlocks", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "destroyBlocks", at = @At("HEAD"), cancellable = true, id = AntiEntityGrief.MOD_ID + ":dragonDestroy" )
     private void cancelDestroyBlocks(CallbackInfoReturnable<Boolean> cir) {
         // Prevent block destruction when the ender dragon flies through them
         if (!Configs.ENDER_DRAGON.canDo(Capabilities.DESTROY_BLOCKS)) {

@@ -1,5 +1,6 @@
 package antientitygrief.mixin.entities;
 
+import antientitygrief.AntiEntityGrief;
 import antientitygrief.config.Capabilities;
 import antientitygrief.config.Configs;
 import net.minecraft.entity.passive.FoxEntity;
@@ -10,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(FoxEntity.EatBerriesGoal.class)
 public class FoxEntityEatBerriesGoalMixin {
-	@Inject(method = "eatBerries", at = @At("HEAD"), cancellable = true)
+	@Inject(method = "eatBerries", at = @At("HEAD"), cancellable = true, id = AntiEntityGrief.MOD_ID + ":foxEat" )
 	private void onEatBerries(CallbackInfo ci) {
 		if (!Configs.FOX.canDo(Capabilities.EAT_BLOCKS)) {
 			ci.cancel();

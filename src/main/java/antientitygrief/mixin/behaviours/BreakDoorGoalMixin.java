@@ -1,5 +1,6 @@
 package antientitygrief.mixin.behaviours;
 
+import antientitygrief.AntiEntityGrief;
 import antientitygrief.config.Capabilities;
 import antientitygrief.config.Configs;
 import net.minecraft.entity.mob.MobEntity;
@@ -16,7 +17,7 @@ public class BreakDoorGoalMixin extends DoorInteractGoal {
 		super(mob);
 	}
 
-	@Inject(method = "canStart", at = @At("HEAD"), cancellable = true)
+	@Inject(method = "canStart", at = @At("HEAD"), cancellable = true, id = AntiEntityGrief.MOD_ID + ":zombieStartBreakDoor" )
 	private void onCanUse(CallbackInfoReturnable<Boolean> cir) {
 		// Prevent entities from breaking doors
 		if(!Configs.getGriefingOption(this.mob.getType(), Capabilities.BREAK_DOORS)) {
@@ -25,7 +26,7 @@ public class BreakDoorGoalMixin extends DoorInteractGoal {
 		}
 	}
 
-	@Inject(method = "shouldContinue", at = @At("HEAD"), cancellable = true)
+	@Inject(method = "shouldContinue", at = @At("HEAD"), cancellable = true, id = AntiEntityGrief.MOD_ID + ":zombieContinueBreakDoor" )
 	private void canContinueToUse(CallbackInfoReturnable<Boolean> cir) {
 		if(!Configs.getGriefingOption(this.mob.getType(), Capabilities.BREAK_DOORS)) {
 			cir.setReturnValue(false);

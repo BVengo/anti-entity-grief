@@ -1,5 +1,6 @@
 package antientitygrief.mixin.behaviours;
 
+import antientitygrief.AntiEntityGrief;
 import antientitygrief.config.Capabilities;
 import antientitygrief.config.Configs;
 import net.minecraft.util.math.BlockPos;
@@ -15,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(FarmlandBlock.class)
 public class FarmBlockMixin {
-    @Inject(method = "setToDirt", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "setToDirt", at = @At("HEAD"), cancellable = true, id = AntiEntityGrief.MOD_ID + ":setFarmlandToDirt" )
     private static void onSetToDirt(Entity entity, BlockState blockState, World world, BlockPos blockPos, CallbackInfo ci) {
         /**
          * Handle trampling of farmland and crops.

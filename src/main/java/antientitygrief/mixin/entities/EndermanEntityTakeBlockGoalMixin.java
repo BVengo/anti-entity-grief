@@ -1,5 +1,6 @@
 package antientitygrief.mixin.entities;
 
+import antientitygrief.AntiEntityGrief;
 import antientitygrief.config.Capabilities;
 import antientitygrief.config.Configs;
 import org.spongepowered.asm.mixin.Mixin;
@@ -9,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(targets = "net/minecraft/entity/mob/EndermanEntity$PickUpBlockGoal")
 public class EndermanEntityTakeBlockGoalMixin {
-	@Inject(method = "canStart", at = @At("HEAD"), cancellable = true)
+	@Inject(method = "canStart", at = @At("HEAD"), cancellable = true, id = AntiEntityGrief.MOD_ID + ":endermanPickup" )
 	private void onCanUse(CallbackInfoReturnable<Boolean> cir) {
 		// Prevent endermen from taking blocks
 		if (!Configs.ENDERMAN.canDo(Capabilities.DESTROY_BLOCKS)) {

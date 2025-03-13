@@ -2,6 +2,8 @@ package antientitygrief.mixin.entities;
 
 import antientitygrief.config.Capabilities;
 import antientitygrief.config.Configs;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.block.BlockState;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.world.World;
@@ -10,7 +12,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import net.minecraft.util.math.BlockPos;
@@ -30,22 +31,23 @@ public class TurtleEntityLayEggGoalMixin {
         antientitygrief$canGrief = Configs.TURTLE.canDo(Capabilities.PLACE_EGGS);
     }
 
-    @Redirect(method = "tick", at = @At(value = "INVOKE",
+    @WrapOperation(method = "tick", at = @At(value = "INVOKE",
             target = "Lnet/minecraft/world/World;setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;I)Z"))
-    private boolean redirectSetBlock(World world, BlockPos pos, BlockState state, int flags) {
+    private boolean redirectSetBlock(World world, BlockPos pos, BlockState state, int flags, Operation<Boolean> original) {
         // Handle the block change
         if (antientitygrief$canGrief) {
-            return world.setBlockState(pos, state, flags);
+            return original.call(world, pos, state, flags);
         }
         return false;
     }
 
-    @Redirect(method = "tick", at = @At(value = "INVOKE",
+    @WrapOperation(method = "tick", at = @At(value = "INVOKE",
             target = "Lnet/minecraft/world/World;emitGameEvent(Lnet/minecraft/registry/entry/RegistryEntry;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/world/event/GameEvent$Emitter;)V"))
-    private void redirectGameEvent(World world, RegistryEntry<GameEvent> registryEntry, BlockPos blockPos, GameEvent.Emitter emitter) {
+    private void redirectGameEvent(World world, RegistryEntry<GameEvent> registryEntry, BlockPos blockPos,
+                                   GameEvent.Emitter emitter, Operation<Boolean> original) {
         // Handle the game event triggered by the block change
         if (antientitygrief$canGrief) {
-            world.emitGameEvent(registryEntry, blockPos, emitter);
+            original.call(world, registryEntry, blockPos, emitter);
         }
     }
 }

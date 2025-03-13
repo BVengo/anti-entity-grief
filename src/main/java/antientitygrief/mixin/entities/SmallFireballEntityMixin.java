@@ -2,6 +2,8 @@ package antientitygrief.mixin.entities;
 
 import antientitygrief.config.Capabilities;
 import antientitygrief.config.Configs;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.projectile.AbstractFireballEntity;
@@ -10,7 +12,6 @@ import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(SmallFireballEntity.class)
 public class SmallFireballEntityMixin extends AbstractFireballEntity {
@@ -20,10 +21,10 @@ public class SmallFireballEntityMixin extends AbstractFireballEntity {
     }
 
     // Redirect `entity instanceof Mob`
-    @Redirect(method = "onBlockHit", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/GameRules;getBoolean(Lnet/minecraft/world/GameRules$Key;)Z"))
-    private boolean redirectMobGriefing(GameRules instance, GameRules.Key<GameRules.BooleanRule> rule) {
+    @WrapOperation(method = "onBlockHit", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/GameRules;getBoolean(Lnet/minecraft/world/GameRules$Key;)Z"))
+    private boolean redirectMobGriefing(GameRules gameRules, GameRules.Key<GameRules.BooleanRule> rule, Operation<Boolean> original) {
         // Stop mob from placing fires
-        boolean gameRuleResult = instance.getBoolean(rule);
+        boolean gameRuleResult = original.call(gameRules, rule);
 
         Entity entity = this.getOwner();
         if (entity == null) {

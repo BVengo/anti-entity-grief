@@ -2,6 +2,8 @@ package antientitygrief.mixin.entities;
 
 import antientitygrief.config.Capabilities;
 import antientitygrief.config.Configs;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.projectile.AbstractFireballEntity;
@@ -19,8 +21,9 @@ public class FireballEntityMixin extends AbstractFireballEntity {
         super(entityType, world);
     }
 
-    @Redirect(method = "onCollision", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;createExplosion(Lnet/minecraft/entity/Entity;DDDFZLnet/minecraft/world/World$ExplosionSourceType;)V"))
-    private void onOnCollision(World world, Entity entity, double x, double y, double z, float power, boolean createFire, World.ExplosionSourceType source) {
+    @WrapOperation(method = "onCollision", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;createExplosion(Lnet/minecraft/entity/Entity;DDDFZLnet/minecraft/world/World$ExplosionSourceType;)V"))
+    private void onOnCollision(World world, Entity entity, double x, double y, double z, float power, boolean createFire,
+                               World.ExplosionSourceType source, Operation<Boolean> original) {
         // Prevent block destruction and/or fire creation
         Entity owner = this.getOwner();
         if (owner == null) {
@@ -38,6 +41,6 @@ public class FireballEntityMixin extends AbstractFireballEntity {
             createFire = false;
         }
 
-        world.createExplosion(entity, x, y, z, power, createFire, source);
+        original.call(world, entity, x, y, z, power, createFire, source);
     }
 }
