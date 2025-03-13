@@ -64,7 +64,7 @@ public class SpecificCommand {
 				.append(Text.literal(". Is that a valid capability for this entity? ("))
 				.append(Text.literal("Click here or type '" + correctCommand + "' to view capabilities")
 						.styled(style -> style.withColor(Formatting.GRAY)
-								.withClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, correctCommand))))
+								.withClickEvent(new ClickEvent.RunCommand(correctCommand))))
 				.append(Text.literal(")"))
 			));
 			return 0;
